@@ -48,6 +48,15 @@ function HomePage() {
       <Hubs />
       <Contact />
       <Footer />
+      <a
+        href="https://wa.me/5521971803049"
+        target="_blank"
+        rel="noreferrer"
+        aria-label="Fale conosco no WhatsApp"
+        className="fixed bottom-5 right-5 z-40 grid h-14 w-14 place-items-center rounded-full bg-[#25D366] text-white shadow-xl shadow-black/20 transition-transform hover:scale-105 active:scale-95"
+      >
+        <MessageCircle className="h-6 w-6" />
+      </a>
     </div>
   );
 }
@@ -100,14 +109,13 @@ function Nav() {
         </nav>
 
         <div className="flex items-center gap-2">
-          <div className="hidden sm:block">
-            <ThemeToggle />
-          </div>
+          <ThemeToggle />
           <Button
             asChild
+            size="sm"
             className="hidden bg-primary text-primary-foreground shadow-sm hover:bg-primary/90 md:inline-flex"
           >
-            <a href="#contato">Inscreva-se Já</a>
+            <a href="#contato">Inscreva-se</a>
           </Button>
           <button
             aria-label="Abrir menu"
