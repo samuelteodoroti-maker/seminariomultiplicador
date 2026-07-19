@@ -213,7 +213,7 @@ function Nav() {
             size="lg"
             className="mt-3 h-12 rounded-full bg-primary text-primary-foreground shadow-sm hover:bg-primary/90"
           >
-            <a href="#contato" onClick={() => setOpen(false)}>
+            <a href={INSCRICAO_URL} target="_blank" rel="noreferrer" onClick={() => setOpen(false)}>
               Inscreva-se Já <ArrowRight className="ml-2 h-4 w-4" />
             </a>
           </Button>
