@@ -59,10 +59,22 @@ function HomePage() {
 
 /* ---------------- Reusable primitives ---------------- */
 
-function LogoMark({ className }: { className?: string }) {
+function LogoMark({
+  className,
+  variant = "default",
+}: {
+  className?: string;
+  variant?: "default" | "light" | "dark";
+}) {
+  const src =
+    variant === "light"
+      ? logoLightAsset.url
+      : variant === "dark"
+        ? logoDarkAsset.url
+        : logoAsset.url;
   return (
     <img
-      src={logoAsset.url}
+      src={src}
       alt="Seminário Teológico Multiplicador"
       className={cn("object-contain", className)}
     />
