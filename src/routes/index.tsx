@@ -382,13 +382,13 @@ function Hero() {
             Formação Ministerial · Desde 2019
           </Badge>
 
-          <h1 className="font-display text-[2.5rem] font-bold leading-[1.02] tracking-tight text-balance text-foreground sm:text-6xl md:text-7xl lg:text-[5.25rem]">
+          <h1 className="font-display text-[2.25rem] font-bold leading-[1.05] tracking-tight text-balance text-foreground sm:text-5xl md:text-6xl lg:text-[4.5rem]">
             Seminário Teológico Batista{" "}
             <span className="relative inline-block whitespace-nowrap">
-              <span className="relative z-10 bg-gradient-to-br from-primary to-primary/70 bg-clip-text text-transparent">
+              <span className="relative z-10 bg-gradient-to-br from-primary via-primary to-primary/70 bg-clip-text text-transparent">
                 Multiplicador
               </span>
-              <span className="absolute inset-x-0 bottom-1 -z-0 h-3 -skew-x-6 bg-gold/40" />
+              <span className="absolute inset-x-0 bottom-1 -z-0 h-3 -skew-x-6 rounded-sm bg-gold/40" />
             </span>
           </h1>
 
