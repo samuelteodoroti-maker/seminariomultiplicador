@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import {
   BookOpen,
   MapPin,
-  MapPin,
   Phone,
   Mail,
   Clock,
