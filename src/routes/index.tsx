@@ -2,7 +2,6 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import {
   BookOpen,
-  GraduationCap,
   MapPin,
   Phone,
   Mail,
@@ -28,11 +27,14 @@ export const Route = createFileRoute("/")({
   component: HomePage,
 });
 
+const INSCRICAO_URL =
+  "https://docs.google.com/forms/d/e/1FAIpQLSd_FXumqagFpFB14oDqXOgmRRNaQliiftQqzplHdrx6uC4hhw/viewform?utm_source=ig&utm_medium=social&utm_content=link_in_bio";
+
 const NAV = [
   { href: "#home", label: "Home" },
   { href: "#historia", label: "Nossa História" },
-  { href: "#cursos", label: "Cursos" },
-  { href: "#polos", label: "Polos e Parcerias" },
+  { href: "#cursos", label: "Curso" },
+  { href: "#polos", label: "Localização" },
   { href: "#contato", label: "Contato" },
 ];
 
@@ -171,7 +173,7 @@ function Nav() {
             size="sm"
             className="hidden h-9 rounded-full bg-primary px-4 text-primary-foreground shadow-sm hover:bg-primary/90 md:inline-flex"
           >
-            <a href="#contato">
+            <a href={INSCRICAO_URL} target="_blank" rel="noreferrer">
               Inscreva-se <ArrowRight className="ml-1.5 h-3.5 w-3.5" />
             </a>
           </Button>
@@ -210,7 +212,7 @@ function Nav() {
             size="lg"
             className="mt-3 h-12 rounded-full bg-primary text-primary-foreground shadow-sm hover:bg-primary/90"
           >
-            <a href="#contato" onClick={() => setOpen(false)}>
+            <a href={INSCRICAO_URL} target="_blank" rel="noreferrer" onClick={() => setOpen(false)}>
               Inscreva-se Já <ArrowRight className="ml-2 h-4 w-4" />
             </a>
           </Button>
@@ -265,8 +267,8 @@ function Hero() {
               size="lg"
               className="group h-12 rounded-full bg-primary px-7 text-[15px] text-primary-foreground shadow-lg shadow-primary/20 transition-all hover:-translate-y-0.5 hover:bg-primary/90 hover:shadow-primary/30"
             >
-              <a href="#cursos">
-                Ver Cursos Disponíveis
+              <a href={INSCRICAO_URL} target="_blank" rel="noreferrer">
+                Inscreva-se Já
                 <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-0.5" />
               </a>
             </Button>
@@ -276,7 +278,7 @@ function Hero() {
               variant="outline"
               className="h-12 rounded-full border-border bg-background/70 px-7 text-[15px] backdrop-blur transition-colors hover:bg-accent"
             >
-              <a href="#historia">Conheça Nossa História</a>
+              <a href="#cursos">Ver Curso</a>
             </Button>
           </div>
 
@@ -311,15 +313,15 @@ function History() {
     },
     {
       year: "2021",
-      title: "Expansão para novos polos",
+      title: "Consolidação da formação",
       body:
-        "A obra cresceu e novos polos foram estabelecidos, ampliando o alcance da formação teológica no Rio de Janeiro.",
+        "A obra amadureceu, com turmas consolidadas e uma comunidade crescente de vocacionados comprometidos com a Palavra.",
     },
     {
       year: "2024+",
-      title: "Estrutura consolidada",
+      title: "Nova sede em Bangu",
       body:
-        "Hoje operamos com sede administrativa em Bangu, polo em Campo Grande e ensino a distância em parceria com universidades reconhecidas.",
+        "Hoje toda a formação está centralizada na nossa sede em Bangu, em parceria com a Igreja Batista Nova Betel — um ambiente único dedicado ao seu chamado.",
     },
   ];
 
@@ -397,8 +399,8 @@ function History() {
 const COURSE_HIGHLIGHTS = [
   "Teologia Sistemática e Bíblica",
   "Professores qualificados e experientes",
-  "Modalidade presencial e a distância (EaD)",
-  "Certificação com respaldo universitário",
+  "Ensino presencial em Bangu — RJ",
+  "Ambiente acolhedor e dedicado ao seu chamado",
 ];
 
 function Courses() {
@@ -462,8 +464,8 @@ function Courses() {
                     size="lg"
                     className="h-12 rounded-full bg-primary px-6 text-primary-foreground shadow-md shadow-primary/20 transition-all hover:-translate-y-0.5 hover:bg-primary/90"
                   >
-                    <a href="#contato">
-                      Quero me inscrever
+                    <a href={INSCRICAO_URL} target="_blank" rel="noreferrer">
+                      Inscreva-se agora
                       <ArrowRight className="ml-1.5 h-4 w-4" />
                     </a>
                   </Button>
@@ -492,34 +494,7 @@ function Courses() {
   );
 }
 
-/* ---------------- Hubs ---------------- */
-
-const HUBS = [
-  {
-    tag: "Sede Administrativa",
-    name: "Polo Teológico Bangu",
-    address: "Av. Santa Cruz, 6197 — Bangu, Rio de Janeiro — RJ",
-    note: "Em parceria com a Igreja Batista Nova Betel.",
-  },
-  {
-    tag: "Polo Regional",
-    name: "Polo Campo Grande",
-    address: "Rua Pampeiro, 373 — Campo Grande, RJ",
-    note: "Em parceria com a Igreja Batista Nova Bereira.",
-  },
-  {
-    tag: "Ensino a Distância",
-    name: "Polo EaD",
-    address: "Aulas online com plataformas universitárias parceiras.",
-    note: "Formação flexível com certificação reconhecida.",
-  },
-];
-
-const PARTNERS = [
-  "Cruzeiro do Sul Virtual",
-  "UNIFIL — Universidade Filadélfia",
-  "UNOESTE — Universidade do Oeste Paulista",
-];
+/* ---------------- Location ---------------- */
 
 function Hubs() {
   return (
@@ -530,62 +505,62 @@ function Hubs() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <SectionHeader
           align="center"
-          eyebrow="Polos e Parcerias"
-          title="Uma estrutura pensada para o seu chamado."
-          description="Formação presencial em polos estratégicos e ensino a distância com o respaldo de universidades reconhecidas."
+          eyebrow="Nossa Localização"
+          title="Um só endereço, dedicado ao seu chamado."
+          description="Toda a nossa formação acontece de forma presencial em Bangu, em parceria com a Igreja Batista Nova Betel."
         />
 
-        <div className="mt-16 grid gap-6 md:grid-cols-3">
-          {HUBS.map((h) => (
-            <Card
-              key={h.name}
-              className="group border-border/70 bg-card transition-all duration-300 hover:-translate-y-1 hover:border-gold/50 hover:shadow-lg hover:shadow-primary/5"
-            >
-              <CardContent className="p-7">
-                <div className="mb-5 inline-grid h-11 w-11 place-items-center rounded-xl bg-primary/10 text-primary">
-                  <MapPin className="h-5 w-5" />
-                </div>
+        <div className="mx-auto mt-14 max-w-4xl">
+          <Card className="group overflow-hidden border-border/70 bg-card shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-gold/60 hover:shadow-xl hover:shadow-primary/5">
+            <CardContent className="grid gap-8 p-8 sm:p-10 lg:grid-cols-[auto_1fr] lg:gap-12">
+              <div className="inline-grid h-16 w-16 place-items-center rounded-2xl bg-primary/10 text-primary transition-all group-hover:scale-105 group-hover:bg-primary group-hover:text-primary-foreground">
+                <MapPin className="h-7 w-7" />
+              </div>
+              <div>
                 <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-gold">
-                  {h.tag}
+                  Sede Única — Presencial
                 </p>
-                <h3 className="mt-1.5 font-display text-xl font-bold text-balance">
-                  {h.name}
+                <h3 className="mt-1.5 font-display text-2xl font-bold text-balance sm:text-3xl">
+                  Seminário Multiplicador — Bangu
                 </h3>
                 <p className="mt-4 text-[15px] leading-relaxed text-muted-foreground text-pretty">
-                  {h.address}
+                  Av. Santa Cruz, 6197 — Bangu, Rio de Janeiro — RJ
+                  <br />
+                  CEP 21820-020
                 </p>
                 <div className="mt-5 rounded-lg border border-dashed border-border bg-background/50 p-3 text-xs italic text-muted-foreground">
-                  {h.note}
+                  Em parceria com a Igreja Batista Nova Betel.
                 </div>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
 
-        <div className="mt-20">
-          <div className="mx-auto max-w-2xl text-center">
-            <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-muted-foreground">
-              Parcerias Universitárias — EaD
-            </p>
-            <h3 className="mt-3 font-display text-2xl font-semibold text-balance sm:text-3xl">
-              Formação a distância com respaldo acadêmico
-            </h3>
-          </div>
-          <div className="mt-8 grid gap-4 sm:grid-cols-3">
-            {PARTNERS.map((p) => (
-              <div
-                key={p}
-                className="flex items-center gap-4 rounded-2xl border border-border bg-background p-5 transition-colors hover:border-gold/60"
-              >
-                <div className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-primary/10 text-primary">
-                  <GraduationCap className="h-5 w-5" />
+                <div className="mt-7 flex flex-col gap-3 sm:flex-row">
+                  <Button
+                    asChild
+                    size="lg"
+                    className="h-12 rounded-full bg-primary px-6 text-primary-foreground shadow-md shadow-primary/20 transition-all hover:-translate-y-0.5 hover:bg-primary/90"
+                  >
+                    <a href={INSCRICAO_URL} target="_blank" rel="noreferrer">
+                      Inscreva-se agora
+                      <ArrowRight className="ml-1.5 h-4 w-4" />
+                    </a>
+                  </Button>
+                  <Button
+                    asChild
+                    size="lg"
+                    variant="outline"
+                    className="h-12 rounded-full border-border bg-background px-6 hover:bg-accent"
+                  >
+                    <a
+                      href="https://www.google.com/maps/search/?api=1&query=Av.+Santa+Cruz+6197+Bangu+Rio+de+Janeiro"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      Ver no mapa
+                    </a>
+                  </Button>
                 </div>
-                <p className="font-display text-sm font-semibold leading-snug text-balance">
-                  {p}
-                </p>
               </div>
-            ))}
-          </div>
+            </CardContent>
+          </Card>
         </div>
       </div>
     </section>
@@ -625,13 +600,9 @@ function Contact() {
                   size="lg"
                   className="h-12 rounded-full bg-gold px-6 text-gold-foreground shadow-lg shadow-black/10 transition-transform hover:-translate-y-0.5 hover:bg-gold/90"
                 >
-                  <a
-                    href="https://wa.me/5521971803049"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    <MessageCircle className="mr-2 h-4 w-4" />
-                    WhatsApp
+                  <a href={INSCRICAO_URL} target="_blank" rel="noreferrer">
+                    <Sparkles className="mr-2 h-4 w-4" />
+                    Inscreva-se Já
                   </a>
                 </Button>
                 <Button
@@ -640,8 +611,12 @@ function Contact() {
                   variant="outline"
                   className="h-12 rounded-full border-primary-foreground/25 bg-transparent px-6 text-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground"
                 >
-                  <a href="mailto:contato@multiplicadorrj.com.br">
-                    <Mail className="mr-2 h-4 w-4" /> Enviar E-mail
+                  <a
+                    href="https://wa.me/5521971803049"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <MessageCircle className="mr-2 h-4 w-4" /> WhatsApp
                   </a>
                 </Button>
               </div>
