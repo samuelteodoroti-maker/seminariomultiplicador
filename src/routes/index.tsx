@@ -350,6 +350,7 @@ function Nav() {
           </Button>
         </div>
       </div>
+      <ScrollProgress />
     </header>
   );
 }
