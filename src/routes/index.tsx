@@ -91,12 +91,12 @@ function LogoMark({
   className?: string;
   variant?: "default" | "light" | "dark";
 }) {
-  const src =
-    variant === "light"
-      ? logoLightAsset.url
-      : variant === "dark"
-        ? logoDarkAsset.url
-        : logoAsset.url;
+  // Unified brand mark — use the official logo everywhere.
+  void variant;
+  void logoLightAsset;
+  void logoDarkAsset;
+  const src = logoAsset.url;
+
   return (
     <img
       src={src}
