@@ -446,24 +446,31 @@ function Hero() {
 
 function Pillars() {
   const items = [
-    { k: "2019", v: "Ano de fundação" },
-    { k: "100%", v: "Ensino presencial" },
-    { k: "5.0★", v: "Avaliação no Google" },
-    { k: "Bangu", v: "Sede única — RJ" },
+    { k: "2019", v: "Ano de fundação", Icon: Calendar },
+    { k: "100%", v: "Ensino presencial", Icon: GraduationCap },
+    { k: "5.0★", v: "Avaliação no Google", Icon: Award },
+    { k: "Bangu", v: "Sede única — RJ", Icon: Building2 },
   ];
   return (
     <section aria-label="Destaques institucionais" className="border-b border-border/70 bg-background">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <dl className="grid grid-cols-2 divide-x divide-y divide-border/60 sm:grid-cols-4 sm:divide-y-0">
-          {items.map((it) => (
-            <div key={it.k} className="px-4 py-6 text-center sm:py-8">
+          {items.map((it, i) => (
+            <Reveal
+              key={it.k}
+              delay={i * 80}
+              className="group px-4 py-6 text-center sm:py-8"
+            >
+              <div className="mx-auto mb-3 inline-grid h-10 w-10 place-items-center rounded-xl bg-primary/8 text-primary transition-all duration-300 group-hover:-translate-y-0.5 group-hover:bg-primary group-hover:text-primary-foreground">
+                <it.Icon className="h-5 w-5" />
+              </div>
               <dt className="font-display text-2xl font-bold text-primary sm:text-3xl">
                 {it.k}
               </dt>
               <dd className="mt-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-muted-foreground sm:text-xs">
                 {it.v}
               </dd>
-            </div>
+            </Reveal>
           ))}
         </dl>
       </div>
