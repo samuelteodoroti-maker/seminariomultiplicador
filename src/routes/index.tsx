@@ -283,7 +283,7 @@ function Hero() {
   return (
     <section
       id="home"
-      className="relative isolate overflow-hidden border-b border-border/70 bg-hero-pattern"
+      className="relative isolate scroll-mt-24 overflow-hidden border-b border-border/70 bg-hero-pattern"
     >
       <div className="absolute inset-0 -z-10 bg-grid-pattern opacity-70" />
       {/* Decorative floating orbs */}
