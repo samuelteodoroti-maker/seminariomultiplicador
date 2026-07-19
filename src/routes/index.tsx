@@ -22,6 +22,8 @@ import { Badge } from "@/components/ui/badge";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { cn } from "@/lib/utils";
 import logoAsset from "@/assets/logo-multiplicador.png.asset.json";
+import logoLightAsset from "@/assets/logo-multiplicador-light.webp.asset.json";
+import logoDarkAsset from "@/assets/logo-multiplicador-dark.webp.asset.json";
 
 export const Route = createFileRoute("/")({
   component: HomePage,
