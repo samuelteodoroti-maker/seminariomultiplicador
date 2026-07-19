@@ -601,13 +601,9 @@ function Contact() {
                   size="lg"
                   className="h-12 rounded-full bg-gold px-6 text-gold-foreground shadow-lg shadow-black/10 transition-transform hover:-translate-y-0.5 hover:bg-gold/90"
                 >
-                  <a
-                    href="https://wa.me/5521971803049"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    <MessageCircle className="mr-2 h-4 w-4" />
-                    WhatsApp
+                  <a href={INSCRICAO_URL} target="_blank" rel="noreferrer">
+                    <Sparkles className="mr-2 h-4 w-4" />
+                    Inscreva-se Já
                   </a>
                 </Button>
                 <Button
@@ -616,8 +612,12 @@ function Contact() {
                   variant="outline"
                   className="h-12 rounded-full border-primary-foreground/25 bg-transparent px-6 text-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground"
                 >
-                  <a href="mailto:contato@multiplicadorrj.com.br">
-                    <Mail className="mr-2 h-4 w-4" /> Enviar E-mail
+                  <a
+                    href="https://wa.me/5521971803049"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <MessageCircle className="mr-2 h-4 w-4" /> WhatsApp
                   </a>
                 </Button>
               </div>
