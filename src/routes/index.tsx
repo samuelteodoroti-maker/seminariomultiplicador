@@ -429,6 +429,14 @@ function Hero() {
             </span>
           </div>
         </div>
+
+        <a
+          href="#historia"
+          aria-label="Rolar para a próxima seção"
+          className="mx-auto mt-14 hidden h-11 w-11 place-items-center rounded-full border border-border/70 bg-card/70 text-muted-foreground backdrop-blur transition-colors hover:border-gold/60 hover:text-gold sm:grid"
+        >
+          <ChevronDown className="h-5 w-5 animate-scroll-cue" />
+        </a>
       </div>
     </section>
   );
