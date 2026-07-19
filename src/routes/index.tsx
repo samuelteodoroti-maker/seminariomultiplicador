@@ -400,8 +400,8 @@ function History() {
 const COURSE_HIGHLIGHTS = [
   "Teologia Sistemática e Bíblica",
   "Professores qualificados e experientes",
-  "Modalidade presencial e a distância (EaD)",
-  "Certificação com respaldo universitário",
+  "Ensino presencial em Bangu — RJ",
+  "Ambiente acolhedor e dedicado ao seu chamado",
 ];
 
 function Courses() {
