@@ -811,10 +811,10 @@ function Contact() {
                   Contato
                 </span>
               </div>
-              <h2 className="mt-5 font-display text-3xl font-bold leading-[1.05] text-balance sm:text-4xl md:text-5xl">
+              <h2 className="mt-5 font-display text-3xl font-bold leading-[1.05] text-balance text-white drop-shadow-sm sm:text-4xl md:text-5xl dark:text-primary-foreground">
                 Dê o próximo passo em seu chamado.
               </h2>
-              <p className="mt-5 max-w-md text-base leading-relaxed text-primary-foreground/80 text-pretty sm:text-lg">
+              <p className="mt-5 max-w-md text-base leading-relaxed text-white/85 text-pretty sm:text-lg dark:text-primary-foreground/80">
                 Fale com nossa equipe pelo WhatsApp, e-mail ou visite nossa
                 sede em Bangu. Teremos alegria em atender você.
               </p>
