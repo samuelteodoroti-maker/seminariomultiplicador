@@ -462,7 +462,7 @@ function Courses() {
   return (
     <section
       id="cursos"
-      className="relative border-b border-border/70 bg-cream/40 py-24 dark:bg-card/25 sm:py-32"
+      className="relative scroll-mt-24 border-b border-border/70 bg-cream/40 py-24 dark:bg-card/25 sm:py-32"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <SectionHeader
