@@ -30,6 +30,7 @@ import { cn } from "@/lib/utils";
 import logoAsset from "@/assets/logo-multiplicador.png.asset.json";
 import logoLightAsset from "@/assets/logo-multiplicador-light.webp.asset.json";
 import logoDarkAsset from "@/assets/logo-multiplicador-dark.webp.asset.json";
+import abibetAsset from "@/assets/abibet-logo.png.asset.json";
 
 export const Route = createFileRoute("/")({
   component: HomePage,
@@ -58,6 +59,7 @@ function HomePage() {
         <History />
         <Courses />
         <Hubs />
+        <Affiliation />
         <Contact />
       </main>
       <Footer />
