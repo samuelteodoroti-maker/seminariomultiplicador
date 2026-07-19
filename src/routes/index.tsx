@@ -174,7 +174,7 @@ function Nav() {
             size="sm"
             className="hidden h-9 rounded-full bg-primary px-4 text-primary-foreground shadow-sm hover:bg-primary/90 md:inline-flex"
           >
-            <a href="#contato">
+            <a href={INSCRICAO_URL} target="_blank" rel="noreferrer">
               Inscreva-se <ArrowRight className="ml-1.5 h-3.5 w-3.5" />
             </a>
           </Button>
