@@ -195,15 +195,30 @@ function Nav() {
         </a>
 
         <nav className="hidden items-center gap-0.5 lg:flex">
-          {NAV.map((item) => (
-            <a
-              key={item.href}
-              href={item.href}
-              className="relative rounded-md px-3.5 py-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
-            >
-              {item.label}
-            </a>
-          ))}
+          {NAV.map((item) => {
+            const id = item.href.slice(1);
+            const isActive = active === id;
+            return (
+              <a
+                key={item.href}
+                href={item.href}
+                className={cn(
+                  "relative rounded-md px-3.5 py-2 text-sm font-medium transition-colors",
+                  isActive
+                    ? "text-foreground"
+                    : "text-muted-foreground hover:text-foreground",
+                )}
+              >
+                {item.label}
+                <span
+                  className={cn(
+                    "absolute inset-x-3.5 -bottom-0.5 h-0.5 rounded-full bg-gold transition-all duration-300",
+                    isActive ? "opacity-100 scale-x-100" : "opacity-0 scale-x-0",
+                  )}
+                />
+              </a>
+            );
+          })}
         </nav>
 
         <div className="flex items-center gap-2">
