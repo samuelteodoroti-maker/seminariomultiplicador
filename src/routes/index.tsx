@@ -381,7 +381,7 @@ function History() {
   ];
 
   return (
-    <section id="historia" className="border-b border-border/70 py-24 sm:py-32">
+    <section id="historia" className="scroll-mt-24 border-b border-border/70 py-24 sm:py-32">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid gap-14 lg:grid-cols-[minmax(0,1fr)_1.15fr] lg:gap-20">
           <div className="lg:sticky lg:top-28 lg:self-start">
