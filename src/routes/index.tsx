@@ -860,7 +860,10 @@ function Contact() {
                 Bangu, Rio de Janeiro — RJ · CEP 21820-020
               </ContactItem>
               <ContactItem icon={Clock} title="Atendimento" wide>
-                A partir de segunda-feira, 14:00
+                Terça a sábado, a partir das 14h
+              </ContactItem>
+              <ContactItem icon={Calendar} title="Aulas" wide>
+                Terças, quintas e sábados — período noturno
               </ContactItem>
             </div>
           </div>
@@ -978,7 +981,7 @@ function Footer() {
             © {new Date().getFullYear()} Copyright Seminário Teológico
             Multiplicador. Todos os direitos reservados.
           </p>
-          <p>Atendimento a partir de segunda-feira, 14:00</p>
+          <p>Atendimento de terça a sábado, a partir das 14h · Aulas terças, quintas e sábados (noite)</p>
         </div>
       </div>
     </footer>
