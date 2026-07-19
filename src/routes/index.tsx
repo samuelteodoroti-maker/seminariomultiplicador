@@ -356,6 +356,35 @@ function Hero() {
   );
 }
 
+/* ---------------- Pillars strip ---------------- */
+
+function Pillars() {
+  const items = [
+    { k: "2019", v: "Ano de fundação" },
+    { k: "100%", v: "Ensino presencial" },
+    { k: "5.0★", v: "Avaliação no Google" },
+    { k: "Bangu", v: "Sede única — RJ" },
+  ];
+  return (
+    <section aria-label="Destaques institucionais" className="border-b border-border/70 bg-background">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <dl className="grid grid-cols-2 divide-x divide-y divide-border/60 sm:grid-cols-4 sm:divide-y-0">
+          {items.map((it) => (
+            <div key={it.k} className="px-4 py-6 text-center sm:py-8">
+              <dt className="font-display text-2xl font-bold text-primary sm:text-3xl">
+                {it.k}
+              </dt>
+              <dd className="mt-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-muted-foreground sm:text-xs">
+                {it.v}
+              </dd>
+            </div>
+          ))}
+        </dl>
+      </div>
+    </section>
+  );
+}
+
 /* ---------------- History ---------------- */
 
 function History() {
