@@ -465,8 +465,8 @@ function Courses() {
                     size="lg"
                     className="h-12 rounded-full bg-primary px-6 text-primary-foreground shadow-md shadow-primary/20 transition-all hover:-translate-y-0.5 hover:bg-primary/90"
                   >
-                    <a href="#contato">
-                      Quero me inscrever
+                    <a href={INSCRICAO_URL} target="_blank" rel="noreferrer">
+                      Inscreva-se agora
                       <ArrowRight className="ml-1.5 h-4 w-4" />
                     </a>
                   </Button>
