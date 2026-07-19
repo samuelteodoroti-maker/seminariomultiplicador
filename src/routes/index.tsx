@@ -30,6 +30,7 @@ import { cn } from "@/lib/utils";
 import logoAsset from "@/assets/logo-multiplicador.png.asset.json";
 import logoLightAsset from "@/assets/logo-multiplicador-light.webp.asset.json";
 import logoDarkAsset from "@/assets/logo-multiplicador-dark.webp.asset.json";
+import abibetAsset from "@/assets/abibet-logo.png.asset.json";
 
 export const Route = createFileRoute("/")({
   component: HomePage,
@@ -58,6 +59,7 @@ function HomePage() {
         <History />
         <Courses />
         <Hubs />
+        <Affiliation />
         <Contact />
       </main>
       <Footer />
@@ -739,6 +741,52 @@ function Hubs() {
             </CardContent>
           </Card>
         </div>
+      </div>
+    </section>
+  );
+}
+
+/* ---------------- Affiliation ---------------- */
+
+function Affiliation() {
+  return (
+    <section
+      aria-label="Filiação institucional"
+      className="border-b border-border/70 bg-background py-16 sm:py-20"
+    >
+      <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+        <Reveal className="flex flex-col items-center gap-8 rounded-3xl border border-border/70 bg-card/50 p-8 text-center shadow-sm sm:p-10 md:flex-row md:text-left">
+          <a
+            href="https://abibet.org.br"
+            target="_blank"
+            rel="noreferrer"
+            className="shrink-0 rounded-xl bg-white p-4 shadow-sm ring-1 ring-border transition-transform hover:scale-[1.02]"
+            aria-label="ABIBET — Associação Brasileira de Instituições Batistas de Ensino Teológico"
+          >
+            <img
+              src={abibetAsset.url}
+              alt="ABIBET — Associação Brasileira de Instituições Batistas de Ensino Teológico"
+              className="h-16 w-auto object-contain sm:h-20"
+            />
+          </a>
+          <div className="flex-1">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-gold">
+              Filiação Institucional
+            </p>
+            <h3 className="mt-2 font-display text-xl font-bold text-balance sm:text-2xl">
+              Membro da ABIBET
+            </h3>
+            <p className="mt-3 text-[15px] leading-relaxed text-muted-foreground text-pretty">
+              O Seminário Teológico Multiplicador é filiado à{" "}
+              <span className="font-semibold text-foreground">
+                Associação Brasileira de Instituições Batistas de Ensino
+                Teológico
+              </span>
+              , referência nacional em excelência acadêmica e integridade
+              doutrinária na formação ministerial batista.
+            </p>
+          </div>
+        </Reveal>
       </div>
     </section>
   );
