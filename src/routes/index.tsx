@@ -268,8 +268,8 @@ function Hero() {
               size="lg"
               className="group h-12 rounded-full bg-primary px-7 text-[15px] text-primary-foreground shadow-lg shadow-primary/20 transition-all hover:-translate-y-0.5 hover:bg-primary/90 hover:shadow-primary/30"
             >
-              <a href="#cursos">
-                Ver Cursos Disponíveis
+              <a href={INSCRICAO_URL} target="_blank" rel="noreferrer">
+                Inscreva-se Já
                 <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-0.5" />
               </a>
             </Button>
@@ -279,7 +279,7 @@ function Hero() {
               variant="outline"
               className="h-12 rounded-full border-border bg-background/70 px-7 text-[15px] backdrop-blur transition-colors hover:bg-accent"
             >
-              <a href="#historia">Conheça Nossa História</a>
+              <a href="#cursos">Ver Curso</a>
             </Button>
           </div>
 
