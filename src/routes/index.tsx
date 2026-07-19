@@ -46,6 +46,7 @@ function HomePage() {
       <Nav />
       <main>
         <Hero />
+        <Pillars />
         <History />
         <Courses />
         <Hubs />
@@ -55,6 +56,30 @@ function HomePage() {
       <FloatingWhatsApp />
     </div>
   );
+}
+
+/* ---------------- Active section hook ---------------- */
+
+function useActiveSection(ids: string[]) {
+  const [active, setActive] = useState<string>(ids[0] ?? "");
+  useEffect(() => {
+    const els = ids
+      .map((id) => document.getElementById(id))
+      .filter((el): el is HTMLElement => !!el);
+    if (!els.length) return;
+    const obs = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((e) => e.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+        if (visible) setActive(visible.target.id);
+      },
+      { rootMargin: "-40% 0px -50% 0px", threshold: [0, 0.25, 0.5, 1] },
+    );
+    els.forEach((el) => obs.observe(el));
+    return () => obs.disconnect();
+  }, [ids]);
+  return active;
 }
 
 /* ---------------- Reusable primitives ---------------- */
@@ -128,6 +153,7 @@ function SectionHeader({
 function Nav() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const active = useActiveSection(["home", "historia", "cursos", "polos", "contato"]);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
@@ -169,15 +195,30 @@ function Nav() {
         </a>
 
         <nav className="hidden items-center gap-0.5 lg:flex">
-          {NAV.map((item) => (
-            <a
-              key={item.href}
-              href={item.href}
-              className="relative rounded-md px-3.5 py-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
-            >
-              {item.label}
-            </a>
-          ))}
+          {NAV.map((item) => {
+            const id = item.href.slice(1);
+            const isActive = active === id;
+            return (
+              <a
+                key={item.href}
+                href={item.href}
+                className={cn(
+                  "relative rounded-md px-3.5 py-2 text-sm font-medium transition-colors",
+                  isActive
+                    ? "text-foreground"
+                    : "text-muted-foreground hover:text-foreground",
+                )}
+              >
+                {item.label}
+                <span
+                  className={cn(
+                    "absolute inset-x-3.5 -bottom-0.5 h-0.5 rounded-full bg-gold transition-all duration-300",
+                    isActive ? "opacity-100 scale-x-100" : "opacity-0 scale-x-0",
+                  )}
+                />
+              </a>
+            );
+          })}
         </nav>
 
         <div className="flex items-center gap-2">
@@ -185,7 +226,7 @@ function Nav() {
           <Button
             asChild
             size="sm"
-            className="hidden h-9 rounded-full bg-primary px-4 text-primary-foreground shadow-sm hover:bg-primary/90 md:inline-flex"
+            className="hidden h-9 rounded-full bg-primary px-4 text-primary-foreground shadow-sm hover:bg-primary/90 sm:inline-flex"
           >
             <a href={INSCRICAO_URL} target="_blank" rel="noreferrer">
               Inscreva-se <ArrowRight className="ml-1.5 h-3.5 w-3.5" />
@@ -242,7 +283,7 @@ function Hero() {
   return (
     <section
       id="home"
-      className="relative isolate overflow-hidden border-b border-border/70 bg-hero-pattern"
+      className="relative isolate scroll-mt-24 overflow-hidden border-b border-border/70 bg-hero-pattern"
     >
       <div className="absolute inset-0 -z-10 bg-grid-pattern opacity-70" />
       {/* Decorative floating orbs */}
@@ -315,6 +356,35 @@ function Hero() {
   );
 }
 
+/* ---------------- Pillars strip ---------------- */
+
+function Pillars() {
+  const items = [
+    { k: "2019", v: "Ano de fundação" },
+    { k: "100%", v: "Ensino presencial" },
+    { k: "5.0★", v: "Avaliação no Google" },
+    { k: "Bangu", v: "Sede única — RJ" },
+  ];
+  return (
+    <section aria-label="Destaques institucionais" className="border-b border-border/70 bg-background">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <dl className="grid grid-cols-2 divide-x divide-y divide-border/60 sm:grid-cols-4 sm:divide-y-0">
+          {items.map((it) => (
+            <div key={it.k} className="px-4 py-6 text-center sm:py-8">
+              <dt className="font-display text-2xl font-bold text-primary sm:text-3xl">
+                {it.k}
+              </dt>
+              <dd className="mt-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-muted-foreground sm:text-xs">
+                {it.v}
+              </dd>
+            </div>
+          ))}
+        </dl>
+      </div>
+    </section>
+  );
+}
+
 /* ---------------- History ---------------- */
 
 function History() {
@@ -340,7 +410,7 @@ function History() {
   ];
 
   return (
-    <section id="historia" className="border-b border-border/70 py-24 sm:py-32">
+    <section id="historia" className="scroll-mt-24 border-b border-border/70 py-24 sm:py-32">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid gap-14 lg:grid-cols-[minmax(0,1fr)_1.15fr] lg:gap-20">
           <div className="lg:sticky lg:top-28 lg:self-start">
@@ -421,7 +491,7 @@ function Courses() {
   return (
     <section
       id="cursos"
-      className="relative border-b border-border/70 bg-cream/40 py-24 dark:bg-card/25 sm:py-32"
+      className="relative scroll-mt-24 border-b border-border/70 bg-cream/40 py-24 dark:bg-card/25 sm:py-32"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <SectionHeader
@@ -514,7 +584,7 @@ function Hubs() {
   return (
     <section
       id="polos"
-      className="border-b border-border/70 py-24 sm:py-32"
+      className="scroll-mt-24 border-b border-border/70 py-24 sm:py-32"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <SectionHeader
@@ -585,7 +655,7 @@ function Hubs() {
 
 function Contact() {
   return (
-    <section id="contato" className="py-24 sm:py-32">
+    <section id="contato" className="scroll-mt-24 py-24 sm:py-32">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="relative overflow-hidden rounded-3xl border border-border bg-gradient-to-br from-primary via-primary to-primary/85 p-8 text-primary-foreground shadow-2xl shadow-primary/20 sm:p-12 lg:p-16 dark:from-card dark:via-card dark:to-background dark:shadow-black/30">
           {/* Decorative */}
