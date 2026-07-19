@@ -562,7 +562,7 @@ function History() {
                     </p>
                   </CardContent>
                 </Card>
-              </li>
+              </Reveal>
             ))}
           </ol>
         </div>
