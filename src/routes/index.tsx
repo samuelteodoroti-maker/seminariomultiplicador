@@ -540,7 +540,7 @@ function History() {
 
           <ol className="relative space-y-5 border-l border-dashed border-border pl-7 lg:pl-10">
             {timeline.map((t, i) => (
-              <li key={t.year} className="relative">
+              <Reveal as="li" delay={i * 120} key={t.year} className="relative">
                 <span className="absolute -left-[38px] top-2 grid h-7 w-7 place-items-center rounded-full border-2 border-gold bg-background shadow-sm lg:-left-[51px]">
                   <span className="h-2 w-2 rounded-full bg-gold" />
                 </span>
