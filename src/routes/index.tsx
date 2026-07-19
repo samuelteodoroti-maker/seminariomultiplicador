@@ -626,7 +626,7 @@ function Hubs() {
 
 function Contact() {
   return (
-    <section id="contato" className="py-24 sm:py-32">
+    <section id="contato" className="scroll-mt-24 py-24 sm:py-32">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="relative overflow-hidden rounded-3xl border border-border bg-gradient-to-br from-primary via-primary to-primary/85 p-8 text-primary-foreground shadow-2xl shadow-primary/20 sm:p-12 lg:p-16 dark:from-card dark:via-card dark:to-background dark:shadow-black/30">
           {/* Decorative */}
