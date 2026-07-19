@@ -495,34 +495,7 @@ function Courses() {
   );
 }
 
-/* ---------------- Hubs ---------------- */
-
-const HUBS = [
-  {
-    tag: "Sede Administrativa",
-    name: "Polo Teológico Bangu",
-    address: "Av. Santa Cruz, 6197 — Bangu, Rio de Janeiro — RJ",
-    note: "Em parceria com a Igreja Batista Nova Betel.",
-  },
-  {
-    tag: "Polo Regional",
-    name: "Polo Campo Grande",
-    address: "Rua Pampeiro, 373 — Campo Grande, RJ",
-    note: "Em parceria com a Igreja Batista Nova Bereira.",
-  },
-  {
-    tag: "Ensino a Distância",
-    name: "Polo EaD",
-    address: "Aulas online com plataformas universitárias parceiras.",
-    note: "Formação flexível com certificação reconhecida.",
-  },
-];
-
-const PARTNERS = [
-  "Cruzeiro do Sul Virtual",
-  "UNIFIL — Universidade Filadélfia",
-  "UNOESTE — Universidade do Oeste Paulista",
-];
+/* ---------------- Location ---------------- */
 
 function Hubs() {
   return (
@@ -533,62 +506,62 @@ function Hubs() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <SectionHeader
           align="center"
-          eyebrow="Polos e Parcerias"
-          title="Uma estrutura pensada para o seu chamado."
-          description="Formação presencial em polos estratégicos e ensino a distância com o respaldo de universidades reconhecidas."
+          eyebrow="Nossa Localização"
+          title="Um só endereço, dedicado ao seu chamado."
+          description="Toda a nossa formação acontece de forma presencial em Bangu, em parceria com a Igreja Batista Nova Betel."
         />
 
-        <div className="mt-16 grid gap-6 md:grid-cols-3">
-          {HUBS.map((h) => (
-            <Card
-              key={h.name}
-              className="group border-border/70 bg-card transition-all duration-300 hover:-translate-y-1 hover:border-gold/50 hover:shadow-lg hover:shadow-primary/5"
-            >
-              <CardContent className="p-7">
-                <div className="mb-5 inline-grid h-11 w-11 place-items-center rounded-xl bg-primary/10 text-primary">
-                  <MapPin className="h-5 w-5" />
-                </div>
+        <div className="mx-auto mt-14 max-w-4xl">
+          <Card className="group overflow-hidden border-border/70 bg-card shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-gold/60 hover:shadow-xl hover:shadow-primary/5">
+            <CardContent className="grid gap-8 p-8 sm:p-10 lg:grid-cols-[auto_1fr] lg:gap-12">
+              <div className="inline-grid h-16 w-16 place-items-center rounded-2xl bg-primary/10 text-primary transition-all group-hover:scale-105 group-hover:bg-primary group-hover:text-primary-foreground">
+                <MapPin className="h-7 w-7" />
+              </div>
+              <div>
                 <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-gold">
-                  {h.tag}
+                  Sede Única — Presencial
                 </p>
-                <h3 className="mt-1.5 font-display text-xl font-bold text-balance">
-                  {h.name}
+                <h3 className="mt-1.5 font-display text-2xl font-bold text-balance sm:text-3xl">
+                  Seminário Multiplicador — Bangu
                 </h3>
                 <p className="mt-4 text-[15px] leading-relaxed text-muted-foreground text-pretty">
-                  {h.address}
+                  Av. Santa Cruz, 6197 — Bangu, Rio de Janeiro — RJ
+                  <br />
+                  CEP 21820-020
                 </p>
                 <div className="mt-5 rounded-lg border border-dashed border-border bg-background/50 p-3 text-xs italic text-muted-foreground">
-                  {h.note}
+                  Em parceria com a Igreja Batista Nova Betel.
                 </div>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
 
-        <div className="mt-20">
-          <div className="mx-auto max-w-2xl text-center">
-            <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-muted-foreground">
-              Parcerias Universitárias — EaD
-            </p>
-            <h3 className="mt-3 font-display text-2xl font-semibold text-balance sm:text-3xl">
-              Formação a distância com respaldo acadêmico
-            </h3>
-          </div>
-          <div className="mt-8 grid gap-4 sm:grid-cols-3">
-            {PARTNERS.map((p) => (
-              <div
-                key={p}
-                className="flex items-center gap-4 rounded-2xl border border-border bg-background p-5 transition-colors hover:border-gold/60"
-              >
-                <div className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-primary/10 text-primary">
-                  <GraduationCap className="h-5 w-5" />
+                <div className="mt-7 flex flex-col gap-3 sm:flex-row">
+                  <Button
+                    asChild
+                    size="lg"
+                    className="h-12 rounded-full bg-primary px-6 text-primary-foreground shadow-md shadow-primary/20 transition-all hover:-translate-y-0.5 hover:bg-primary/90"
+                  >
+                    <a href={INSCRICAO_URL} target="_blank" rel="noreferrer">
+                      Inscreva-se agora
+                      <ArrowRight className="ml-1.5 h-4 w-4" />
+                    </a>
+                  </Button>
+                  <Button
+                    asChild
+                    size="lg"
+                    variant="outline"
+                    className="h-12 rounded-full border-border bg-background px-6 hover:bg-accent"
+                  >
+                    <a
+                      href="https://www.google.com/maps/search/?api=1&query=Av.+Santa+Cruz+6197+Bangu+Rio+de+Janeiro"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      Ver no mapa
+                    </a>
+                  </Button>
                 </div>
-                <p className="font-display text-sm font-semibold leading-snug text-balance">
-                  {p}
-                </p>
               </div>
-            ))}
-          </div>
+            </CardContent>
+          </Card>
         </div>
       </div>
     </section>
