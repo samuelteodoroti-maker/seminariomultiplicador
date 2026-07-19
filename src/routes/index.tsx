@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import {
   BookOpen,
-  GraduationCap,
+  MapPin,
   MapPin,
   Phone,
   Mail,
