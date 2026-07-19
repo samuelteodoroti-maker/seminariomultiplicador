@@ -314,15 +314,15 @@ function History() {
     },
     {
       year: "2021",
-      title: "Expansão para novos polos",
+      title: "Consolidação da formação",
       body:
-        "A obra cresceu e novos polos foram estabelecidos, ampliando o alcance da formação teológica no Rio de Janeiro.",
+        "A obra amadureceu, com turmas consolidadas e uma comunidade crescente de vocacionados comprometidos com a Palavra.",
     },
     {
       year: "2024+",
-      title: "Estrutura consolidada",
+      title: "Nova sede em Bangu",
       body:
-        "Hoje operamos com sede administrativa em Bangu, polo em Campo Grande e ensino a distância em parceria com universidades reconhecidas.",
+        "Hoje toda a formação está centralizada na nossa sede em Bangu, em parceria com a Igreja Batista Nova Betel — um ambiente único dedicado ao seu chamado.",
     },
   ];
 
