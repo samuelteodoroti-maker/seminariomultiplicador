@@ -265,7 +265,8 @@ function Nav() {
           <LogoMark className="h-11 w-11 shrink-0 transition-transform group-hover:scale-105" />
           <span className="flex min-w-0 flex-col leading-tight">
             <span className="truncate font-display text-base font-bold sm:text-lg">
-              Seminário Teológico Batista Multiplicador
+              <span className="sm:hidden">STBM Multiplicador</span>
+              <span className="hidden sm:inline">Seminário Teológico Batista Multiplicador</span>
             </span>
             <span className="hidden text-[10px] font-medium uppercase tracking-[0.22em] text-muted-foreground sm:block">
               Teológico · Rio de Janeiro
