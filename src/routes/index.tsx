@@ -40,6 +40,8 @@ const NAV = [
   { href: "#contato", label: "Contato" },
 ];
 
+const SECTION_IDS = ["home", "historia", "cursos", "polos", "contato"];
+
 function HomePage() {
   return (
     <div className="min-h-screen bg-background text-foreground antialiased transition-colors duration-300">
@@ -153,7 +155,7 @@ function SectionHeader({
 function Nav() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const active = useActiveSection(["home", "historia", "cursos", "polos", "contato"]);
+  const active = useActiveSection(SECTION_IDS);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
