@@ -124,19 +124,23 @@
     border-radius: 6px;
   }
   ::-webkit-scrollbar { width: 10px; height: 10px; }
+  ::-webkit-scrollbar-track { background: transparent; }
   ::-webkit-scrollbar-thumb {
     background: color-mix(in oklab, var(--foreground) 18%, transparent);
     border-radius: 999px;
+    border: 2px solid var(--background);
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: color-mix(in oklab, var(--foreground) 30%, transparent);
+    background: color-mix(in oklab, var(--gold) 55%, var(--foreground) 20%);
   }
+  a, button { -webkit-tap-highlight-color: transparent; }
 }
 
 @utility bg-hero-pattern {
   background-image:
-    radial-gradient(1000px circle at 15% 10%, color-mix(in oklab, var(--gold) 14%, transparent), transparent 55%),
-    radial-gradient(900px circle at 85% 70%, color-mix(in oklab, var(--primary) 18%, transparent), transparent 55%);
+    radial-gradient(1100px circle at 12% 8%, color-mix(in oklab, var(--gold) 16%, transparent), transparent 55%),
+    radial-gradient(1000px circle at 88% 72%, color-mix(in oklab, var(--primary) 20%, transparent), transparent 55%),
+    radial-gradient(600px circle at 50% 100%, color-mix(in oklab, var(--gold) 8%, transparent), transparent 60%);
 }
 
 @utility bg-grid-pattern {
@@ -147,14 +151,25 @@
   mask-image: radial-gradient(ellipse at center, black 40%, transparent 75%);
 }
 
+@utility shadow-elegant {
+  box-shadow:
+    0 1px 2px color-mix(in oklab, var(--primary) 8%, transparent),
+    0 12px 32px -14px color-mix(in oklab, var(--primary) 25%, transparent);
+}
+
+@utility shadow-glow {
+  box-shadow: 0 0 0 1px color-mix(in oklab, var(--gold) 30%, transparent),
+              0 8px 40px -8px color-mix(in oklab, var(--gold) 35%, transparent);
+}
+
 @utility text-balance { text-wrap: balance; }
 @utility text-pretty { text-wrap: pretty; }
 
 @keyframes fade-up {
-  from { opacity: 0; transform: translateY(12px); }
+  from { opacity: 0; transform: translateY(14px); }
   to { opacity: 1; transform: translateY(0); }
 }
-@utility animate-fade-up { animation: fade-up 0.6s ease-out both; }
+@utility animate-fade-up { animation: fade-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) both; }
 
 @keyframes scroll-cue {
   0%, 100% { transform: translateY(0); opacity: 0.55; }
@@ -165,8 +180,8 @@
 /* Scroll-reveal */
 .reveal {
   opacity: 0;
-  transform: translateY(18px);
-  transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+  transform: translateY(20px);
+  transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1), transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
   will-change: opacity, transform;
 }
 .reveal.is-visible { opacity: 1; transform: translateY(0); }
@@ -174,5 +189,6 @@
 @media (prefers-reduced-motion: reduce) {
   .reveal { opacity: 1; transform: none; transition: none; }
   html { scroll-behavior: auto; }
+  .animate-fade-up, .animate-scroll-cue { animation: none !important; }
 }
 
