@@ -22,6 +22,8 @@ import { Badge } from "@/components/ui/badge";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { cn } from "@/lib/utils";
 import logoAsset from "@/assets/logo-multiplicador.png.asset.json";
+import logoLightAsset from "@/assets/logo-multiplicador-light.webp.asset.json";
+import logoDarkAsset from "@/assets/logo-multiplicador-dark.webp.asset.json";
 
 export const Route = createFileRoute("/")({
   component: HomePage,
@@ -57,10 +59,22 @@ function HomePage() {
 
 /* ---------------- Reusable primitives ---------------- */
 
-function LogoMark({ className }: { className?: string }) {
+function LogoMark({
+  className,
+  variant = "default",
+}: {
+  className?: string;
+  variant?: "default" | "light" | "dark";
+}) {
+  const src =
+    variant === "light"
+      ? logoLightAsset.url
+      : variant === "dark"
+        ? logoDarkAsset.url
+        : logoAsset.url;
   return (
     <img
-      src={logoAsset.url}
+      src={src}
       alt="Seminário Teológico Multiplicador"
       className={cn("object-contain", className)}
     />
@@ -237,7 +251,7 @@ function Hero() {
 
       <div className="mx-auto max-w-7xl px-4 pb-24 pt-16 sm:px-6 sm:pb-28 sm:pt-24 lg:px-8 lg:pb-36 lg:pt-32">
         <div className="mx-auto max-w-4xl text-center animate-fade-up">
-          <LogoMark className="mx-auto mb-8 h-20 w-20 drop-shadow-sm sm:h-24 sm:w-24" />
+          <LogoMark variant="light" className="mx-auto mb-8 h-24 w-24 rounded-full shadow-xl shadow-primary/10 ring-1 ring-border sm:h-28 sm:w-28" />
 
           <Badge
             variant="outline"
