@@ -383,7 +383,7 @@ function Hero() {
           </Badge>
 
           <h1 className="font-display text-[2.5rem] font-bold leading-[1.02] tracking-tight text-balance text-foreground sm:text-6xl md:text-7xl lg:text-[5.25rem]">
-            Seminário Teológico{" "}
+            Seminário Teológico Batista{" "}
             <span className="relative inline-block whitespace-nowrap">
               <span className="relative z-10 bg-gradient-to-br from-primary to-primary/70 bg-clip-text text-transparent">
                 Multiplicador
