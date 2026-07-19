@@ -179,7 +179,7 @@ function LogoMark({
   return (
     <img
       src={src}
-      alt="Seminário Teológico Multiplicador"
+      alt="Seminário Teológico Batista Multiplicador"
       className={cn("object-contain", className)}
     />
   );
@@ -265,7 +265,7 @@ function Nav() {
           <LogoMark className="h-11 w-11 shrink-0 transition-transform group-hover:scale-105" />
           <span className="flex min-w-0 flex-col leading-tight">
             <span className="truncate font-display text-base font-bold sm:text-lg">
-              Seminário Multiplicador
+              Seminário Teológico Batista Multiplicador
             </span>
             <span className="hidden text-[10px] font-medium uppercase tracking-[0.22em] text-muted-foreground sm:block">
               Teológico · Rio de Janeiro
@@ -488,7 +488,7 @@ function History() {
       year: "2019",
       title: "O início em Padre Miguel",
       body:
-        "Em março de 2019 nascia o Seminário Multiplicador, com um chamado claro: preparar vocacionados com profundidade bíblica e dependência do Espírito Santo.",
+        "Em março de 2019 nascia o Seminário Teológico Batista Multiplicador, com um chamado claro: preparar vocacionados com profundidade bíblica e dependência do Espírito Santo.",
     },
     {
       year: "2021",
@@ -518,7 +518,7 @@ function History() {
                   <span className="font-semibold text-foreground">
                     março de 2019
                   </span>{" "}
-                  em Padre Miguel, o Seminário Multiplicador tem se expandido
+                  em Padre Miguel, o Seminário Teológico Batista Multiplicador tem se expandido
                   para servir vocacionados em toda a região metropolitana do
                   Rio de Janeiro.
                 </>
@@ -700,7 +700,7 @@ function Hubs() {
                   Sede Única — Presencial
                 </p>
                 <h3 className="mt-1.5 font-display text-2xl font-bold text-balance sm:text-3xl">
-                  Seminário Multiplicador — Bangu
+                  Seminário Teológico Batista Multiplicador — Bangu
                 </h3>
                 <p className="mt-4 text-[15px] leading-relaxed text-muted-foreground text-pretty">
                   Av. Santa Cruz, 6197 — Bangu, Rio de Janeiro — RJ
@@ -777,7 +777,7 @@ function Affiliation() {
               Membro da ABIBET
             </h3>
             <p className="mt-3 text-[15px] leading-relaxed text-muted-foreground text-pretty">
-              O Seminário Teológico Multiplicador é filiado à{" "}
+              O Seminário Teológico Batista Multiplicador é filiado à{" "}
               <span className="font-semibold text-foreground">
                 Associação Brasileira de Instituições Batistas de Ensino
                 Teológico
@@ -913,7 +913,7 @@ function Footer() {
               <LogoMark className="h-12 w-12" />
               <div className="leading-tight">
                 <p className="font-display text-base font-bold">
-                  Seminário Multiplicador
+                  Seminário Teológico Batista Multiplicador
                 </p>
                 <p className="text-xs text-muted-foreground">
                   Formação bíblica e ministerial

@@ -78,13 +78,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Seminário Teológico Multiplicador — Invista em seu chamado" },
+      { title: "Seminário Teológico Batista Multiplicador — Invista em seu chamado" },
       {
         name: "description",
         content:
-          "Seminário Teológico Multiplicador: formação bíblica e ministerial de excelência no Rio de Janeiro. Teologia, Educação Cristã e Ministério de Adoração.",
+          "Seminário Teológico Batista Multiplicador: formação bíblica e ministerial de excelência no Rio de Janeiro. Teologia, Educação Cristã e Ministério de Adoração.",
       },
-      { property: "og:title", content: "Seminário Teológico Multiplicador" },
+      { property: "og:title", content: "Seminário Teológico Batista Multiplicador" },
       {
         property: "og:description",
         content: "O lugar ideal para você investir em seu chamado.",
