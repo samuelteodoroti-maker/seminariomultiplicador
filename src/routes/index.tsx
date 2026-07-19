@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import type { ElementType } from "react";
 import {
   BookOpen,
   MapPin,
@@ -15,6 +16,11 @@ import {
   MessageCircle,
   CheckCircle2,
   ChevronRight,
+  ChevronDown,
+  Calendar,
+  Award,
+  Building2,
+  GraduationCap,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
