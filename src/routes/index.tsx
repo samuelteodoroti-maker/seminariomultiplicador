@@ -555,7 +555,7 @@ function Hubs() {
   return (
     <section
       id="polos"
-      className="border-b border-border/70 py-24 sm:py-32"
+      className="scroll-mt-24 border-b border-border/70 py-24 sm:py-32"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <SectionHeader
