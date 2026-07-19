@@ -90,6 +90,75 @@ function useActiveSection(ids: string[]) {
   return active;
 }
 
+/* ---------------- Scroll reveal ---------------- */
+
+function Reveal({
+  as: Tag = "div",
+  className,
+  delay = 0,
+  children,
+}: {
+  as?: ElementType;
+  className?: string;
+  delay?: number;
+  children: React.ReactNode;
+}) {
+  const ref = useRef<HTMLElement | null>(null);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(
+      (entries) => {
+        for (const e of entries) {
+          if (e.isIntersecting) {
+            (e.target as HTMLElement).classList.add("is-visible");
+            obs.unobserve(e.target);
+          }
+        }
+      },
+      { rootMargin: "0px 0px -10% 0px", threshold: 0.1 },
+    );
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, []);
+  return (
+    <Tag
+      ref={ref as never}
+      className={cn("reveal", className)}
+      style={delay ? { transitionDelay: `${delay}ms` } : undefined}
+    >
+      {children}
+    </Tag>
+  );
+}
+
+/* ---------------- Scroll progress ---------------- */
+
+function ScrollProgress() {
+  const [p, setP] = useState(0);
+  useEffect(() => {
+    const onScroll = () => {
+      const h = document.documentElement;
+      const max = h.scrollHeight - h.clientHeight;
+      setP(max > 0 ? (h.scrollTop / max) * 100 : 0);
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+  return (
+    <div
+      className="pointer-events-none absolute inset-x-0 bottom-0 h-[2px] bg-transparent"
+      aria-hidden
+    >
+      <div
+        className="h-full bg-gradient-to-r from-gold via-primary to-gold transition-[width] duration-150 ease-out"
+        style={{ width: `${p}%` }}
+      />
+    </div>
+  );
+}
+
 /* ---------------- Reusable primitives ---------------- */
 
 function LogoMark({
