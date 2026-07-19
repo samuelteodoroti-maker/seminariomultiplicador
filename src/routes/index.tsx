@@ -981,7 +981,7 @@ function Footer() {
             © {new Date().getFullYear()} Copyright Seminário Teológico
             Multiplicador. Todos os direitos reservados.
           </p>
-          <p>Atendimento a partir de segunda-feira, 14:00</p>
+          <p>Atendimento de terça a sábado, a partir das 14h · Aulas terças, quintas e sábados (noite)</p>
         </div>
       </div>
     </footer>
