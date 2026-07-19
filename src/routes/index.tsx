@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import {
   BookOpen,
   GraduationCap,
-  Music,
   MapPin,
   Phone,
   Mail,
@@ -13,10 +12,8 @@ import {
   X,
   Star,
   Sparkles,
-  Church,
   ArrowRight,
   MessageCircle,
-  Compass,
   CheckCircle2,
   ChevronRight,
 } from "lucide-react";
@@ -25,6 +22,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { cn } from "@/lib/utils";
+import logoAsset from "@/assets/logo-multiplicador.png.asset.json";
 
 export const Route = createFileRoute("/")({
   component: HomePage,
@@ -46,7 +44,6 @@ function HomePage() {
         <Hero />
         <History />
         <Courses />
-        <Guide />
         <Hubs />
         <Contact />
       </main>
@@ -57,6 +54,16 @@ function HomePage() {
 }
 
 /* ---------------- Reusable primitives ---------------- */
+
+function LogoMark({ className }: { className?: string }) {
+  return (
+    <img
+      src={logoAsset.url}
+      alt="Seminário Teológico Multiplicador"
+      className={cn("object-contain", className)}
+    />
+  );
+}
 
 function Eyebrow({ children }: { children: React.ReactNode }) {
   return (
@@ -134,9 +141,7 @@ function Nav() {
           href="#home"
           className="group flex min-w-0 items-center gap-3 rounded-lg"
         >
-          <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-primary text-primary-foreground shadow-sm ring-1 ring-primary/20 transition-transform group-hover:scale-105 dark:bg-gold dark:text-gold-foreground dark:ring-gold/30">
-            <Church className="h-5 w-5" />
-          </span>
+          <LogoMark className="h-11 w-11 shrink-0 transition-transform group-hover:scale-105" />
           <span className="flex min-w-0 flex-col leading-tight">
             <span className="truncate font-display text-base font-bold sm:text-lg">
               Seminário Multiplicador
@@ -164,7 +169,7 @@ function Nav() {
           <Button
             asChild
             size="sm"
-            className="hidden h-9 rounded-full bg-primary px-4 text-primary-foreground shadow-sm hover:bg-primary/90 md:inline-flex dark:bg-gold dark:text-gold-foreground dark:hover:bg-gold/90"
+            className="hidden h-9 rounded-full bg-primary px-4 text-primary-foreground shadow-sm hover:bg-primary/90 md:inline-flex"
           >
             <a href="#contato">
               Inscreva-se <ArrowRight className="ml-1.5 h-3.5 w-3.5" />
@@ -203,7 +208,7 @@ function Nav() {
           <Button
             asChild
             size="lg"
-            className="mt-3 h-12 rounded-full bg-primary text-primary-foreground shadow-sm hover:bg-primary/90 dark:bg-gold dark:text-gold-foreground dark:hover:bg-gold/90"
+            className="mt-3 h-12 rounded-full bg-primary text-primary-foreground shadow-sm hover:bg-primary/90"
           >
             <a href="#contato" onClick={() => setOpen(false)}>
               Inscreva-se Já <ArrowRight className="ml-2 h-4 w-4" />
@@ -230,6 +235,8 @@ function Hero() {
 
       <div className="mx-auto max-w-7xl px-4 pb-24 pt-16 sm:px-6 sm:pb-28 sm:pt-24 lg:px-8 lg:pb-36 lg:pt-32">
         <div className="mx-auto max-w-4xl text-center animate-fade-up">
+          <LogoMark className="mx-auto mb-8 h-20 w-20 drop-shadow-sm sm:h-24 sm:w-24" />
+
           <Badge
             variant="outline"
             className="mb-8 rounded-full border-gold/40 bg-gold/10 px-4 py-1.5 text-xs font-medium tracking-wide text-foreground backdrop-blur"
@@ -241,10 +248,10 @@ function Hero() {
           <h1 className="font-display text-[2.5rem] font-bold leading-[1.02] tracking-tight text-balance text-foreground sm:text-6xl md:text-7xl lg:text-[5.25rem]">
             Seminário Teológico{" "}
             <span className="relative inline-block whitespace-nowrap">
-              <span className="relative z-10 bg-gradient-to-br from-primary to-primary/70 bg-clip-text text-transparent dark:from-gold dark:to-gold/70">
+              <span className="relative z-10 bg-gradient-to-br from-primary to-primary/70 bg-clip-text text-transparent">
                 Multiplicador
               </span>
-              <span className="absolute inset-x-0 bottom-1 -z-0 h-3 -skew-x-6 bg-gold/40 dark:bg-gold/25" />
+              <span className="absolute inset-x-0 bottom-1 -z-0 h-3 -skew-x-6 bg-gold/40" />
             </span>
           </h1>
 
@@ -256,7 +263,7 @@ function Hero() {
             <Button
               asChild
               size="lg"
-              className="group h-12 rounded-full bg-primary px-7 text-[15px] text-primary-foreground shadow-lg shadow-primary/20 transition-all hover:-translate-y-0.5 hover:bg-primary/90 hover:shadow-primary/30 dark:bg-gold dark:text-gold-foreground dark:shadow-gold/20 dark:hover:bg-gold/90"
+              className="group h-12 rounded-full bg-primary px-7 text-[15px] text-primary-foreground shadow-lg shadow-primary/20 transition-all hover:-translate-y-0.5 hover:bg-primary/90 hover:shadow-primary/30"
             >
               <a href="#cursos">
                 Ver Cursos Disponíveis
@@ -336,7 +343,7 @@ function History() {
                 </>
               }
             />
-            <blockquote className="mt-10 overflow-hidden rounded-2xl border border-gold/25 bg-gradient-to-br from-gold/10 to-transparent p-7 dark:from-gold/5">
+            <blockquote className="mt-10 overflow-hidden rounded-2xl border border-gold/25 bg-gradient-to-br from-gold/10 to-transparent p-7">
               <div className="mb-3 font-display text-4xl leading-none text-gold">
                 “
               </div>
@@ -361,7 +368,7 @@ function History() {
                 <Card className="border-border/70 bg-card/60 transition-all duration-300 hover:-translate-y-0.5 hover:border-gold/50 hover:shadow-md hover:shadow-gold/5">
                   <CardContent className="p-6 sm:p-7">
                     <div className="flex items-baseline justify-between gap-3">
-                      <div className="font-display text-3xl font-bold tracking-tight text-primary dark:text-gold">
+                      <div className="font-display text-3xl font-bold tracking-tight text-primary">
                         {t.year}
                       </div>
                       <span className="text-[10px] font-semibold uppercase tracking-widest text-muted-foreground">
@@ -387,28 +394,11 @@ function History() {
 
 /* ---------------- Courses ---------------- */
 
-const COURSES = [
-  {
-    icon: BookOpen,
-    title: "Teologia Cristã",
-    subtitle: "Sistemática e Bíblica",
-    body:
-      "Uma bússola que guiará na jornada do seu chamado, ajudando a explorar o mundo espiritual, mergulhar nas escrituras sagradas e decifrar os fundamentos teológicos.",
-  },
-  {
-    icon: GraduationCap,
-    title: "Educação Cristã",
-    subtitle: "Formação de líderes",
-    body:
-      "Uma jornada enriquecedora destinada a fortalecer os fundamentos espirituais, nutrir a fé e capacitar líderes para viver e ensinar como Jesus.",
-  },
-  {
-    icon: Music,
-    title: "Ministério de Adoração",
-    subtitle: "Adoração como estilo de vida",
-    body:
-      "Um curso especial focado na adoração a Deus como estilo de vida, explorando os caminhos que levam a uma conexão mais profunda e à liderança musical autêntica.",
-  },
+const COURSE_HIGHLIGHTS = [
+  "Teologia Sistemática e Bíblica",
+  "Professores qualificados e experientes",
+  "Modalidade presencial e a distância (EaD)",
+  "Certificação com respaldo universitário",
 ];
 
 function Courses() {
@@ -420,254 +410,80 @@ function Courses() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <SectionHeader
           align="center"
-          eyebrow="Nossos Cursos"
-          title="Professores qualificados. Um ambiente que investe em sua vida."
-          description="Três programas centrais para formar ministros com profundidade bíblica, sensibilidade espiritual e excelência acadêmica."
+          eyebrow="Nosso Curso"
+          title="Teologia Cristã — Sistemática e Bíblica."
+          description="Professores qualificados e um ambiente especial que investe de verdade em sua vida ministerial."
         />
 
-        <div className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {COURSES.map(({ icon: Icon, title, subtitle, body }, i) => (
-            <Card
-              key={title}
-              className="group relative flex flex-col overflow-hidden border-border/70 bg-card transition-all duration-300 hover:-translate-y-1 hover:border-gold/60 hover:shadow-xl hover:shadow-primary/5 dark:hover:shadow-gold/5"
-            >
-              <div className="absolute inset-x-0 top-0 h-[3px] bg-gradient-to-r from-transparent via-gold to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-              <CardContent className="flex flex-1 flex-col p-7 sm:p-8">
-                <div className="mb-6 flex items-center justify-between">
-                  <div className="inline-grid h-14 w-14 place-items-center rounded-2xl bg-primary/10 text-primary transition-all group-hover:scale-105 group-hover:bg-primary group-hover:text-primary-foreground dark:bg-gold/15 dark:text-gold dark:group-hover:bg-gold dark:group-hover:text-gold-foreground">
-                    <Icon className="h-6 w-6" />
-                  </div>
-                  <span className="font-display text-3xl font-bold text-muted-foreground/40">
-                    0{i + 1}
-                  </span>
+        <div className="mx-auto mt-16 max-w-4xl">
+          <Card className="group relative overflow-hidden border-border/70 bg-card shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-gold/60 hover:shadow-xl hover:shadow-primary/5">
+            <div className="absolute inset-x-0 top-0 h-[3px] bg-gradient-to-r from-transparent via-gold to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+            <CardContent className="grid gap-10 p-8 sm:p-10 lg:grid-cols-[auto_1fr] lg:gap-12">
+              <div className="flex flex-col items-start gap-6">
+                <div className="inline-grid h-16 w-16 place-items-center rounded-2xl bg-primary/10 text-primary transition-all group-hover:scale-105 group-hover:bg-primary group-hover:text-primary-foreground">
+                  <BookOpen className="h-7 w-7" />
                 </div>
-                <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-muted-foreground">
-                  {subtitle}
-                </p>
-                <h3 className="mt-1.5 font-display text-2xl font-bold text-balance">
-                  {title}
-                </h3>
-                <p className="mt-4 flex-1 text-[15px] leading-relaxed text-muted-foreground text-pretty">
-                  {body}
-                </p>
-                <a
-                  href="#guia"
-                  className="group/link mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-primary transition-colors hover:text-primary/70 dark:text-gold dark:hover:text-gold/80"
-                >
-                  Descobrir se é pra mim
-                  <ArrowRight className="h-4 w-4 transition-transform group-hover/link:translate-x-0.5" />
-                </a>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-/* ---------------- Interactive Guide ---------------- */
-
-type GoalKey = "pastoral" | "louvor" | "educacao";
-type ModeKey = "presencial" | "ead";
-
-const GOALS: { key: GoalKey; label: string; icon: typeof BookOpen }[] = [
-  { key: "pastoral", label: "Pastoral / Teológico", icon: BookOpen },
-  { key: "louvor", label: "Louvor / Adoração", icon: Music },
-  { key: "educacao", label: "Educação Cristã", icon: GraduationCap },
-];
-
-const MODES: { key: ModeKey; label: string; hint: string }[] = [
-  { key: "presencial", label: "Presencial", hint: "Encontros na sede/polos" },
-  { key: "ead", label: "A Distância — EaD", hint: "Aulas online e flexíveis" },
-];
-
-const RECOMMENDATIONS: Record<GoalKey, { title: string; body: string }> = {
-  pastoral: {
-    title: "Bacharel em Teologia Cristã",
-    body:
-      "Nosso programa de Teologia Sistemática e Bíblica é o caminho ideal para quem sente o chamado pastoral e ministerial.",
-  },
-  louvor: {
-    title: "Ministério de Adoração",
-    body:
-      "Um curso desenhado para levitas e líderes de louvor que desejam profundidade espiritual e excelência na liderança musical.",
-  },
-  educacao: {
-    title: "Educação Cristã",
-    body:
-      "Formação sólida para quem deseja ensinar a fé com clareza, servir na escola bíblica, no discipulado e na liderança educacional da igreja.",
-  },
-};
-
-function Guide() {
-  const [goal, setGoal] = useState<GoalKey | null>(null);
-  const [mode, setMode] = useState<ModeKey | null>(null);
-  const done = goal && mode;
-  const rec = goal ? RECOMMENDATIONS[goal] : null;
-  const steps = (goal ? 1 : 0) + (mode ? 1 : 0);
-  const progress = (steps / 2) * 100;
-
-  const waMsg = encodeURIComponent(
-    done
-      ? `Olá! Tenho interesse em ${RECOMMENDATIONS[goal!].title} (${mode === "ead" ? "EaD" : "Presencial"}).`
-      : "Olá! Gostaria de saber mais sobre os cursos do Seminário Multiplicador.",
-  );
-
-  return (
-    <section id="guia" className="border-b border-border/70 py-24 sm:py-32">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="grid gap-12 lg:grid-cols-[1fr_1.25fr] lg:items-start lg:gap-16">
-          <div className="lg:sticky lg:top-28">
-            <div className="inline-flex items-center gap-2 rounded-full border border-gold/40 bg-gold/10 px-3.5 py-1.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-gold">
-              <Compass className="h-3.5 w-3.5" />
-              Guia Interativo
-            </div>
-            <h2 className="mt-5 font-display text-3xl font-bold leading-[1.1] text-balance sm:text-4xl md:text-5xl">
-              Descubra seu Caminho Ministerial
-            </h2>
-            <p className="mt-5 text-base leading-relaxed text-muted-foreground text-pretty sm:text-lg">
-              Responda duas perguntas e receba uma recomendação personalizada
-              de curso alinhada ao seu chamado e à sua realidade.
-            </p>
-
-            <div className="mt-8 hidden space-y-3 lg:block">
-              {[
-                "Sem cadastro, sem compromisso",
-                "Resposta imediata via WhatsApp",
-                "Consultor qualificado",
-              ].map((f) => (
-                <div key={f} className="flex items-center gap-2.5 text-sm text-muted-foreground">
-                  <CheckCircle2 className="h-4 w-4 shrink-0 text-gold" />
-                  {f}
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <Card className="border-border/70 bg-card shadow-sm">
-            <CardContent className="space-y-8 p-6 sm:p-8">
-              {/* Progress */}
-              <div>
-                <div className="mb-2 flex items-center justify-between text-[11px] font-semibold uppercase tracking-widest text-muted-foreground">
-                  <span>Passo {steps} de 2</span>
-                  <span>{Math.round(progress)}%</span>
-                </div>
-                <div className="h-1.5 w-full overflow-hidden rounded-full bg-muted">
-                  <div
-                    className="h-full rounded-full bg-gradient-to-r from-primary to-gold transition-[width] duration-500 dark:from-gold dark:to-primary"
-                    style={{ width: `${progress}%` }}
-                  />
-                </div>
-              </div>
-
-              <div>
-                <div className="flex items-baseline gap-2">
-                  <span className="grid h-6 w-6 place-items-center rounded-full bg-primary/10 text-[11px] font-bold text-primary dark:bg-gold/15 dark:text-gold">
-                    1
-                  </span>
-                  <h3 className="font-display text-lg font-semibold">
-                    Qual é o seu objetivo ministerial?
-                  </h3>
-                </div>
-                <div className="mt-4 grid gap-2.5 sm:grid-cols-3">
-                  {GOALS.map(({ key, label, icon: Icon }) => {
-                    const active = goal === key;
-                    return (
-                      <button
-                        key={key}
-                        onClick={() => setGoal(key)}
-                        aria-pressed={active}
-                        className={cn(
-                          "group flex flex-col items-start gap-2.5 rounded-2xl border p-4 text-left transition-all duration-200",
-                          active
-                            ? "border-primary bg-primary/5 shadow-sm ring-1 ring-primary/20 dark:border-gold dark:bg-gold/10 dark:ring-gold/25"
-                            : "border-border hover:-translate-y-0.5 hover:border-primary/40 hover:bg-accent/40 dark:hover:border-gold/40",
-                        )}
-                      >
-                        <span
-                          className={cn(
-                            "grid h-9 w-9 place-items-center rounded-lg transition-colors",
-                            active
-                              ? "bg-primary text-primary-foreground dark:bg-gold dark:text-gold-foreground"
-                              : "bg-muted text-muted-foreground group-hover:bg-accent",
-                          )}
-                        >
-                          <Icon className="h-4 w-4" />
-                        </span>
-                        <span className="text-sm font-semibold leading-snug">
-                          {label}
-                        </span>
-                      </button>
-                    );
-                  })}
-                </div>
-              </div>
-
-              <div>
-                <div className="flex items-baseline gap-2">
-                  <span className="grid h-6 w-6 place-items-center rounded-full bg-primary/10 text-[11px] font-bold text-primary dark:bg-gold/15 dark:text-gold">
-                    2
-                  </span>
-                  <h3 className="font-display text-lg font-semibold">
-                    Qual sua preferência de modalidade?
-                  </h3>
-                </div>
-                <div className="mt-4 grid gap-2.5 sm:grid-cols-2">
-                  {MODES.map(({ key, label, hint }) => {
-                    const active = mode === key;
-                    return (
-                      <button
-                        key={key}
-                        onClick={() => setMode(key)}
-                        aria-pressed={active}
-                        className={cn(
-                          "flex flex-col items-start gap-1 rounded-2xl border p-4 text-left transition-all duration-200",
-                          active
-                            ? "border-primary bg-primary/5 shadow-sm ring-1 ring-primary/20 dark:border-gold dark:bg-gold/10 dark:ring-gold/25"
-                            : "border-border hover:-translate-y-0.5 hover:border-primary/40 hover:bg-accent/40 dark:hover:border-gold/40",
-                        )}
-                      >
-                        <span className="text-sm font-semibold">{label}</span>
-                        <span className="text-xs text-muted-foreground">{hint}</span>
-                      </button>
-                    );
-                  })}
-                </div>
-              </div>
-
-              {done && rec && (
-                <div className="animate-fade-up rounded-2xl border border-gold/40 bg-gradient-to-br from-gold/12 via-transparent to-primary/12 p-6 sm:p-7">
-                  <div className="mb-3 inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.2em] text-gold">
-                    <CheckCircle2 className="h-4 w-4" />
-                    Recomendação para você
-                  </div>
-                  <h4 className="font-display text-2xl font-bold text-balance">
-                    {rec.title}
-                  </h4>
-                  <p className="mt-2 text-[15px] leading-relaxed text-muted-foreground text-pretty">
-                    {rec.body} Modalidade escolhida:{" "}
-                    <span className="font-semibold text-foreground">
-                      {mode === "ead" ? "A Distância (EaD)" : "Presencial"}
-                    </span>
-                    .
+                <div>
+                  <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-gold">
+                    Programa Principal
                   </p>
+                  <h3 className="mt-1.5 font-display text-3xl font-bold text-balance sm:text-4xl">
+                    Teologia Cristã
+                  </h3>
+                  <p className="mt-1 text-sm font-medium text-muted-foreground">
+                    Sistemática e Bíblica
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex flex-col">
+                <p className="text-[15px] leading-relaxed text-muted-foreground text-pretty sm:text-base">
+                  Uma bússola que guiará na jornada do seu chamado, ajudando a
+                  explorar o mundo espiritual, mergulhar nas escrituras sagradas
+                  e decifrar os fundamentos teológicos com profundidade,
+                  sensibilidade espiritual e excelência acadêmica.
+                </p>
+
+                <ul className="mt-6 grid gap-3 sm:grid-cols-2">
+                  {COURSE_HIGHLIGHTS.map((h) => (
+                    <li
+                      key={h}
+                      className="flex items-start gap-2.5 text-sm text-foreground/85"
+                    >
+                      <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-gold" />
+                      <span>{h}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                <div className="mt-8 flex flex-col gap-3 sm:flex-row">
                   <Button
                     asChild
                     size="lg"
-                    className="mt-6 h-12 rounded-full bg-[#25D366] text-white shadow-md shadow-[#25D366]/25 hover:bg-[#20b858]"
+                    className="h-12 rounded-full bg-primary px-6 text-primary-foreground shadow-md shadow-primary/20 transition-all hover:-translate-y-0.5 hover:bg-primary/90"
+                  >
+                    <a href="#contato">
+                      Quero me inscrever
+                      <ArrowRight className="ml-1.5 h-4 w-4" />
+                    </a>
+                  </Button>
+                  <Button
+                    asChild
+                    size="lg"
+                    variant="outline"
+                    className="h-12 rounded-full border-border bg-background px-6 hover:bg-accent"
                   >
                     <a
-                      href={`https://wa.me/5521971803049?text=${waMsg}`}
+                      href="https://wa.me/5521971803049?text=Ol%C3%A1%21%20Tenho%20interesse%20no%20curso%20de%20Teologia%20Crist%C3%A3."
                       target="_blank"
                       rel="noreferrer"
                     >
                       <MessageCircle className="mr-2 h-4 w-4" />
-                      Falar com Consultor no WhatsApp
+                      Tirar dúvidas
                     </a>
                   </Button>
                 </div>
-              )}
+              </div>
             </CardContent>
           </Card>
         </div>
@@ -709,7 +525,7 @@ function Hubs() {
   return (
     <section
       id="polos"
-      className="border-b border-border/70 bg-cream/40 py-24 dark:bg-card/25 sm:py-32"
+      className="border-b border-border/70 py-24 sm:py-32"
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <SectionHeader
@@ -726,7 +542,7 @@ function Hubs() {
               className="group border-border/70 bg-card transition-all duration-300 hover:-translate-y-1 hover:border-gold/50 hover:shadow-lg hover:shadow-primary/5"
             >
               <CardContent className="p-7">
-                <div className="mb-5 inline-grid h-11 w-11 place-items-center rounded-xl bg-primary/10 text-primary dark:bg-gold/15 dark:text-gold">
+                <div className="mb-5 inline-grid h-11 w-11 place-items-center rounded-xl bg-primary/10 text-primary">
                   <MapPin className="h-5 w-5" />
                 </div>
                 <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-gold">
@@ -761,7 +577,7 @@ function Hubs() {
                 key={p}
                 className="flex items-center gap-4 rounded-2xl border border-border bg-background p-5 transition-colors hover:border-gold/60"
               >
-                <div className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-primary/10 text-primary dark:bg-gold/15 dark:text-gold">
+                <div className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-primary/10 text-primary">
                   <GraduationCap className="h-5 w-5" />
                 </div>
                 <p className="font-display text-sm font-semibold leading-snug text-balance">
@@ -824,7 +640,7 @@ function Contact() {
                   variant="outline"
                   className="h-12 rounded-full border-primary-foreground/25 bg-transparent px-6 text-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground"
                 >
-                  <a href="mailto:contato@setemrj.com.br">
+                  <a href="mailto:contato@multiplicadorrj.com.br">
                     <Mail className="mr-2 h-4 w-4" /> Enviar E-mail
                   </a>
                 </Button>
@@ -836,7 +652,7 @@ function Contact() {
                 (21) 97180-3049
               </ContactItem>
               <ContactItem icon={Mail} title="E-mail">
-                contato@setemrj.com.br
+                contato@multiplicadorrj.com.br
               </ContactItem>
               <ContactItem icon={MapPin} title="Endereço" wide>
                 Av. de Santa Cruz, 6197
@@ -894,9 +710,7 @@ function Footer() {
         <div className="grid gap-10 md:grid-cols-3">
           <div>
             <div className="flex items-center gap-3">
-              <span className="grid h-11 w-11 place-items-center rounded-xl bg-primary text-primary-foreground shadow-sm dark:bg-gold dark:text-gold-foreground">
-                <Church className="h-5 w-5" />
-              </span>
+              <LogoMark className="h-12 w-12" />
               <div className="leading-tight">
                 <p className="font-display text-base font-bold">
                   Seminário Multiplicador
@@ -939,7 +753,7 @@ function Footer() {
                 <Phone className="h-4 w-4 text-gold" /> (21) 97180-3049
               </li>
               <li className="flex items-center gap-2">
-                <Mail className="h-4 w-4 text-gold" /> contato@setemrj.com.br
+                <Mail className="h-4 w-4 text-gold" /> contato@multiplicadorrj.com.br
               </li>
               <li className="flex items-start gap-2">
                 <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-gold" />

@@ -40,55 +40,56 @@
 
 :root {
   --radius: 0.75rem;
-  /* Warm cream background, deep navy foreground */
-  --background: oklch(0.985 0.012 85);
-  --foreground: oklch(0.22 0.05 265);
+  /* Soft cream/white background, deep green foreground — inspired by Multiplicador logo */
+  --background: oklch(0.985 0.008 150);
+  --foreground: oklch(0.24 0.06 160);
   --card: oklch(1 0 0);
-  --card-foreground: oklch(0.22 0.05 265);
+  --card-foreground: oklch(0.24 0.06 160);
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.22 0.05 265);
-  /* Deep navy primary */
-  --primary: oklch(0.28 0.08 265);
-  --primary-foreground: oklch(0.985 0.012 85);
-  --secondary: oklch(0.95 0.015 85);
-  --secondary-foreground: oklch(0.28 0.08 265);
-  --muted: oklch(0.95 0.015 85);
-  --muted-foreground: oklch(0.5 0.03 265);
-  --accent: oklch(0.93 0.05 85);
-  --accent-foreground: oklch(0.28 0.08 265);
+  --popover-foreground: oklch(0.24 0.06 160);
+  /* Deep leafy green primary */
+  --primary: oklch(0.48 0.14 152);
+  --primary-foreground: oklch(0.985 0.008 150);
+  --secondary: oklch(0.95 0.02 150);
+  --secondary-foreground: oklch(0.28 0.08 160);
+  --muted: oklch(0.95 0.02 150);
+  --muted-foreground: oklch(0.5 0.03 160);
+  --accent: oklch(0.92 0.05 160);
+  --accent-foreground: oklch(0.28 0.08 160);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(0.9 0.02 85);
-  --input: oklch(0.9 0.02 85);
-  --ring: oklch(0.6 0.12 75);
-  --gold: oklch(0.72 0.14 78);
-  --gold-foreground: oklch(0.22 0.05 265);
-  --cream: oklch(0.97 0.02 85);
+  --border: oklch(0.9 0.02 150);
+  --input: oklch(0.9 0.02 150);
+  --ring: oklch(0.62 0.16 155);
+  /* Fresh emerald accent (replaces gold) */
+  --gold: oklch(0.68 0.18 155);
+  --gold-foreground: oklch(0.18 0.05 160);
+  --cream: oklch(0.97 0.02 150);
 }
 
 .dark {
-  --background: oklch(0.18 0.03 265);
-  --foreground: oklch(0.96 0.01 85);
-  --card: oklch(0.23 0.04 265);
-  --card-foreground: oklch(0.96 0.01 85);
-  --popover: oklch(0.23 0.04 265);
-  --popover-foreground: oklch(0.96 0.01 85);
-  --primary: oklch(0.75 0.13 78);
-  --primary-foreground: oklch(0.18 0.03 265);
-  --secondary: oklch(0.28 0.04 265);
-  --secondary-foreground: oklch(0.96 0.01 85);
-  --muted: oklch(0.28 0.04 265);
-  --muted-foreground: oklch(0.72 0.03 85);
-  --accent: oklch(0.32 0.06 265);
-  --accent-foreground: oklch(0.96 0.01 85);
+  --background: oklch(0.18 0.03 160);
+  --foreground: oklch(0.96 0.01 150);
+  --card: oklch(0.23 0.04 160);
+  --card-foreground: oklch(0.96 0.01 150);
+  --popover: oklch(0.23 0.04 160);
+  --popover-foreground: oklch(0.96 0.01 150);
+  --primary: oklch(0.72 0.17 155);
+  --primary-foreground: oklch(0.18 0.03 160);
+  --secondary: oklch(0.28 0.04 160);
+  --secondary-foreground: oklch(0.96 0.01 150);
+  --muted: oklch(0.28 0.04 160);
+  --muted-foreground: oklch(0.72 0.03 150);
+  --accent: oklch(0.32 0.06 160);
+  --accent-foreground: oklch(0.96 0.01 150);
   --destructive: oklch(0.704 0.191 22.216);
   --destructive-foreground: oklch(0.984 0.003 247.858);
   --border: oklch(1 0 0 / 10%);
   --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.75 0.13 78);
-  --gold: oklch(0.78 0.14 78);
-  --gold-foreground: oklch(0.18 0.03 265);
-  --cream: oklch(0.23 0.04 265);
+  --ring: oklch(0.75 0.17 155);
+  --gold: oklch(0.78 0.18 155);
+  --gold-foreground: oklch(0.18 0.05 160);
+  --cream: oklch(0.23 0.04 160);
 }
 
 @layer base {
