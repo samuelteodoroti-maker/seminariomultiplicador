@@ -372,7 +372,7 @@ function Hero() {
 
       <div className="mx-auto max-w-7xl px-4 pb-24 pt-16 sm:px-6 sm:pb-28 sm:pt-24 lg:px-8 lg:pb-36 lg:pt-32">
         <div className="mx-auto max-w-4xl text-center animate-fade-up">
-          <LogoMark variant="light" className="mx-auto mb-8 h-24 w-24 rounded-full shadow-xl shadow-primary/10 ring-1 ring-border sm:h-28 sm:w-28" />
+          <LogoMark variant="light" className="mx-auto mb-8 h-24 w-24 rounded-full bg-white p-3 shadow-xl shadow-primary/20 ring-1 ring-border dark:bg-white/95 dark:ring-white/20 sm:h-28 sm:w-28" />
 
           <Badge
             variant="outline"
