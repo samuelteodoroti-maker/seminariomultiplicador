@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import type { ElementType } from "react";
 import {
   BookOpen,
   MapPin,
@@ -15,6 +16,11 @@ import {
   MessageCircle,
   CheckCircle2,
   ChevronRight,
+  ChevronDown,
+  Calendar,
+  Award,
+  Building2,
+  GraduationCap,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -82,6 +88,75 @@ function useActiveSection(ids: string[]) {
     return () => obs.disconnect();
   }, [ids]);
   return active;
+}
+
+/* ---------------- Scroll reveal ---------------- */
+
+function Reveal({
+  as: Tag = "div",
+  className,
+  delay = 0,
+  children,
+}: {
+  as?: ElementType;
+  className?: string;
+  delay?: number;
+  children: React.ReactNode;
+}) {
+  const ref = useRef<HTMLElement | null>(null);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(
+      (entries) => {
+        for (const e of entries) {
+          if (e.isIntersecting) {
+            (e.target as HTMLElement).classList.add("is-visible");
+            obs.unobserve(e.target);
+          }
+        }
+      },
+      { rootMargin: "0px 0px -10% 0px", threshold: 0.1 },
+    );
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, []);
+  return (
+    <Tag
+      ref={ref as never}
+      className={cn("reveal", className)}
+      style={delay ? { transitionDelay: `${delay}ms` } : undefined}
+    >
+      {children}
+    </Tag>
+  );
+}
+
+/* ---------------- Scroll progress ---------------- */
+
+function ScrollProgress() {
+  const [p, setP] = useState(0);
+  useEffect(() => {
+    const onScroll = () => {
+      const h = document.documentElement;
+      const max = h.scrollHeight - h.clientHeight;
+      setP(max > 0 ? (h.scrollTop / max) * 100 : 0);
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+  return (
+    <div
+      className="pointer-events-none absolute inset-x-0 bottom-0 h-[2px] bg-transparent"
+      aria-hidden
+    >
+      <div
+        className="h-full bg-gradient-to-r from-gold via-primary to-gold transition-[width] duration-150 ease-out"
+        style={{ width: `${p}%` }}
+      />
+    </div>
+  );
 }
 
 /* ---------------- Reusable primitives ---------------- */
@@ -275,6 +350,7 @@ function Nav() {
           </Button>
         </div>
       </div>
+      <ScrollProgress />
     </header>
   );
 }
@@ -353,6 +429,14 @@ function Hero() {
             </span>
           </div>
         </div>
+
+        <a
+          href="#historia"
+          aria-label="Rolar para a próxima seção"
+          className="mx-auto mt-14 hidden h-11 w-11 place-items-center rounded-full border border-border/70 bg-card/70 text-muted-foreground backdrop-blur transition-colors hover:border-gold/60 hover:text-gold sm:grid"
+        >
+          <ChevronDown className="h-5 w-5 animate-scroll-cue" />
+        </a>
       </div>
     </section>
   );
@@ -362,24 +446,31 @@ function Hero() {
 
 function Pillars() {
   const items = [
-    { k: "2019", v: "Ano de fundação" },
-    { k: "100%", v: "Ensino presencial" },
-    { k: "5.0★", v: "Avaliação no Google" },
-    { k: "Bangu", v: "Sede única — RJ" },
+    { k: "2019", v: "Ano de fundação", Icon: Calendar },
+    { k: "100%", v: "Ensino presencial", Icon: GraduationCap },
+    { k: "5.0★", v: "Avaliação no Google", Icon: Award },
+    { k: "Bangu", v: "Sede única — RJ", Icon: Building2 },
   ];
   return (
     <section aria-label="Destaques institucionais" className="border-b border-border/70 bg-background">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <dl className="grid grid-cols-2 divide-x divide-y divide-border/60 sm:grid-cols-4 sm:divide-y-0">
-          {items.map((it) => (
-            <div key={it.k} className="px-4 py-6 text-center sm:py-8">
+          {items.map((it, i) => (
+            <Reveal
+              key={it.k}
+              delay={i * 80}
+              className="group px-4 py-6 text-center sm:py-8"
+            >
+              <div className="mx-auto mb-3 inline-grid h-10 w-10 place-items-center rounded-xl bg-primary/8 text-primary transition-all duration-300 group-hover:-translate-y-0.5 group-hover:bg-primary group-hover:text-primary-foreground">
+                <it.Icon className="h-5 w-5" />
+              </div>
               <dt className="font-display text-2xl font-bold text-primary sm:text-3xl">
                 {it.k}
               </dt>
               <dd className="mt-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-muted-foreground sm:text-xs">
                 {it.v}
               </dd>
-            </div>
+            </Reveal>
           ))}
         </dl>
       </div>
@@ -449,7 +540,7 @@ function History() {
 
           <ol className="relative space-y-5 border-l border-dashed border-border pl-7 lg:pl-10">
             {timeline.map((t, i) => (
-              <li key={t.year} className="relative">
+              <Reveal as="li" delay={i * 120} key={t.year} className="relative">
                 <span className="absolute -left-[38px] top-2 grid h-7 w-7 place-items-center rounded-full border-2 border-gold bg-background shadow-sm lg:-left-[51px]">
                   <span className="h-2 w-2 rounded-full bg-gold" />
                 </span>
@@ -471,7 +562,7 @@ function History() {
                     </p>
                   </CardContent>
                 </Card>
-              </li>
+              </Reveal>
             ))}
           </ol>
         </div>
