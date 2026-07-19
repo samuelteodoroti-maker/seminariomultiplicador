@@ -28,11 +28,14 @@ export const Route = createFileRoute("/")({
   component: HomePage,
 });
 
+const INSCRICAO_URL =
+  "https://docs.google.com/forms/d/e/1FAIpQLSd_FXumqagFpFB14oDqXOgmRRNaQliiftQqzplHdrx6uC4hhw/viewform?utm_source=ig&utm_medium=social&utm_content=link_in_bio";
+
 const NAV = [
   { href: "#home", label: "Home" },
   { href: "#historia", label: "Nossa História" },
-  { href: "#cursos", label: "Cursos" },
-  { href: "#polos", label: "Polos e Parcerias" },
+  { href: "#cursos", label: "Curso" },
+  { href: "#polos", label: "Localização" },
   { href: "#contato", label: "Contato" },
 ];
 
