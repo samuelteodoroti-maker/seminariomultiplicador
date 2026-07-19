@@ -153,6 +153,7 @@ function SectionHeader({
 function Nav() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const active = useActiveSection(["home", "historia", "cursos", "polos", "contato"]);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
