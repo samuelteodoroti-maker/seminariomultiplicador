@@ -303,6 +303,17 @@ function Nav() {
         </nav>
 
         <div className="flex items-center gap-2">
+          <Button
+            asChild
+            variant="outline"
+            size="sm"
+            className="hidden h-9 rounded-full border-border bg-background/70 px-4 text-[13px] font-medium text-foreground backdrop-blur transition-colors hover:bg-accent sm:inline-flex"
+          >
+            <Link to="/aluno">
+              <LogIn className="mr-1.5 h-3.5 w-3.5" />
+              Já sou Aluno
+            </Link>
+          </Button>
           <ThemeToggle />
           <Button
             asChild
