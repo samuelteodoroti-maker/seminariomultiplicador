@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import type { ElementType } from "react";
 import {
@@ -21,6 +21,7 @@ import {
   Award,
   Building2,
   GraduationCap,
+  LogIn,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -302,6 +303,17 @@ function Nav() {
         </nav>
 
         <div className="flex items-center gap-2">
+          <Button
+            asChild
+            variant="outline"
+            size="sm"
+            className="hidden h-9 rounded-full border-border bg-background/70 px-4 text-[13px] font-medium text-foreground backdrop-blur transition-colors hover:bg-accent sm:inline-flex"
+          >
+            <Link to="/aluno">
+              <LogIn className="mr-1.5 h-3.5 w-3.5" />
+              Já sou Aluno
+            </Link>
+          </Button>
           <ThemeToggle />
           <Button
             asChild
@@ -344,8 +356,20 @@ function Nav() {
           ))}
           <Button
             asChild
+            variant="outline"
             size="lg"
-            className="mt-3 h-12 rounded-full bg-primary text-primary-foreground shadow-sm hover:bg-primary/90"
+            className="mt-3 h-12 rounded-full border-border bg-background text-[15px] font-medium text-foreground transition-colors hover:bg-accent"
+            onClick={() => setOpen(false)}
+          >
+            <Link to="/aluno">
+              <LogIn className="mr-2 h-4 w-4" />
+              Já sou Aluno
+            </Link>
+          </Button>
+          <Button
+            asChild
+            size="lg"
+            className="mt-2 h-12 rounded-full bg-primary text-primary-foreground shadow-sm hover:bg-primary/90"
           >
             <a href={INSCRICAO_URL} target="_blank" rel="noreferrer" onClick={() => setOpen(false)}>
               Inscreva-se Já <ArrowRight className="ml-2 h-4 w-4" />
