@@ -355,9 +355,18 @@ function Nav() {
           ))}
           <Button
             asChild
+            size="lg"
+            className="mt-3 h-12 rounded-full bg-primary text-primary-foreground shadow-sm hover:bg-primary/90"
+          >
+            <a href={INSCRICAO_URL} target="_blank" rel="noreferrer" onClick={() => setOpen(false)}>
+              Inscreva-se Já <ArrowRight className="ml-2 h-4 w-4" />
+            </a>
+          </Button>
+          <Button
+            asChild
             variant="outline"
             size="lg"
-            className="mt-3 h-12 rounded-full border-border bg-background text-[15px] font-medium text-foreground transition-colors hover:bg-accent"
+            className="mt-2 h-12 rounded-full border-border bg-background text-[15px] font-medium text-foreground transition-colors hover:bg-accent"
             onClick={() => setOpen(false)}
           >
             <Link to="/aluno">
@@ -365,15 +374,10 @@ function Nav() {
               Já sou Aluno
             </Link>
           </Button>
-          <Button
-            asChild
-            size="lg"
-            className="mt-2 h-12 rounded-full bg-primary text-primary-foreground shadow-sm hover:bg-primary/90"
-          >
-            <a href={INSCRICAO_URL} target="_blank" rel="noreferrer" onClick={() => setOpen(false)}>
-              Inscreva-se Já <ArrowRight className="ml-2 h-4 w-4" />
-            </a>
-          </Button>
+          <div className="mt-4 flex items-center justify-between rounded-lg border border-border/60 bg-card/40 px-3 py-2">
+            <span className="text-sm font-medium text-muted-foreground">Tema</span>
+            <ThemeToggle />
+          </div>
         </div>
       </div>
       <ScrollProgress />
