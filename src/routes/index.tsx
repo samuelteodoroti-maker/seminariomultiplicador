@@ -329,7 +329,7 @@ function Nav() {
           <button
             aria-label={open ? "Fechar menu" : "Abrir menu"}
             aria-expanded={open}
-            className="grid h-10 w-10 place-items-center rounded-lg border border-border bg-card/50 backdrop-blur transition-colors hover:bg-accent lg:hidden"
+            className="grid h-10 w-10 place-items-center rounded-lg border border-border bg-card/50 backdrop-blur transition-colors hover:bg-accent"
             onClick={() => setOpen((o) => !o)}
           >
             {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
@@ -340,7 +340,7 @@ function Nav() {
       {/* Mobile sheet */}
       <div
         className={cn(
-          "overflow-hidden border-t border-border/60 bg-background/95 backdrop-blur-lg transition-[max-height,opacity] duration-300 lg:hidden",
+          "overflow-hidden border-t border-border/60 bg-background/95 backdrop-blur-lg transition-[max-height,opacity] duration-300",
           open ? "max-h-[500px] opacity-100" : "pointer-events-none max-h-0 opacity-0",
         )}
       >
