@@ -305,6 +305,15 @@ function Nav() {
         <div className="flex items-center gap-2">
           <Button
             asChild
+            size="sm"
+            className="hidden h-9 rounded-full bg-primary px-4 text-primary-foreground shadow-sm hover:bg-primary/90 sm:inline-flex"
+          >
+            <a href={INSCRICAO_URL} target="_blank" rel="noreferrer">
+              Inscreva-se <ArrowRight className="ml-1.5 h-3.5 w-3.5" />
+            </a>
+          </Button>
+          <Button
+            asChild
             variant="outline"
             size="sm"
             className="hidden h-9 rounded-full border-border bg-background/70 px-4 text-[13px] font-medium text-foreground backdrop-blur transition-colors hover:bg-accent sm:inline-flex"
@@ -313,16 +322,6 @@ function Nav() {
               <LogIn className="mr-1.5 h-3.5 w-3.5" />
               Já sou Aluno
             </Link>
-          </Button>
-          <ThemeToggle />
-          <Button
-            asChild
-            size="sm"
-            className="hidden h-9 rounded-full bg-primary px-4 text-primary-foreground shadow-sm hover:bg-primary/90 sm:inline-flex"
-          >
-            <a href={INSCRICAO_URL} target="_blank" rel="noreferrer">
-              Inscreva-se <ArrowRight className="ml-1.5 h-3.5 w-3.5" />
-            </a>
           </Button>
           <button
             aria-label={open ? "Fechar menu" : "Abrir menu"}
