@@ -303,6 +303,9 @@ function Nav() {
         </nav>
 
         <div className="flex items-center gap-2">
+          <div className="hidden lg:flex lg:items-center">
+            <ThemeToggle />
+          </div>
           <Button
             asChild
             size="sm"
