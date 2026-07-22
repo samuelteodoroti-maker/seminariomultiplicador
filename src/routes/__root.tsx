@@ -84,17 +84,20 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         content:
           "Seminário Teológico Batista Multiplicador: formação bíblica e ministerial de excelência no Rio de Janeiro. Teologia, Educação Cristã e Ministério de Adoração.",
       },
-      { property: "og:title", content: "Seminário Teológico Batista Multiplicador" },
+      { property: "og:title", content: "Seminário Teológico Batista Multiplicador — Invista em seu chamado" },
       {
         property: "og:description",
-        content: "O lugar ideal para você investir em seu chamado.",
+        content: "Seminário Teológico Batista Multiplicador: formação bíblica e ministerial de excelência no Rio de Janeiro. Teologia, Educação Cristã e Ministério de Adoração.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Seminário Teológico Batista Multiplicador — Invista em seu chamado" },
+      { name: "twitter:description", content: "Seminário Teológico Batista Multiplicador: formação bíblica e ministerial de excelência no Rio de Janeiro. Teologia, Educação Cristã e Ministério de Adoração." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/874d6293-bf96-43a5-ae2f-905ebb888abb/id-preview-bab0ee27--4c402c81-c2a7-4180-af1a-575f4ecf63b5.lovable.app-1784737459726.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/874d6293-bf96-43a5-ae2f-905ebb888abb/id-preview-bab0ee27--4c402c81-c2a7-4180-af1a-575f4ecf63b5.lovable.app-1784737459726.png" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
-      { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
