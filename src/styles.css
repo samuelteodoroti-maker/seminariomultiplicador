@@ -192,3 +192,7 @@
   .animate-fade-up, .animate-scroll-cue { animation: none !important; }
 }
 
+
+#lovable-badge {
+  display: none !important;
+}
