@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react";
 
-type Theme = "light" | "dark" | "system";
+type Theme = "light" | "dark";
 
 interface ThemeCtx {
   theme: Theme;
@@ -11,24 +11,20 @@ interface ThemeCtx {
 const ThemeContext = createContext<ThemeCtx | null>(null);
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const [theme, setThemeState] = useState<Theme>("system");
+  const [theme, setThemeState] = useState<Theme>("light");
   const [resolved, setResolved] = useState<"light" | "dark">("light");
 
   useEffect(() => {
-    const stored = (localStorage.getItem("theme") as Theme | null) ?? "system";
-    setThemeState(stored);
+    const stored = localStorage.getItem("theme");
+    setThemeState(stored === "dark" ? "dark" : "light");
   }, []);
 
   useEffect(() => {
-    const mq = window.matchMedia("(prefers-color-scheme: dark)");
     const apply = () => {
-      const r = theme === "system" ? (mq.matches ? "dark" : "light") : theme;
-      setResolved(r);
-      document.documentElement.classList.toggle("dark", r === "dark");
+      setResolved(theme);
+      document.documentElement.classList.toggle("dark", theme === "dark");
     };
     apply();
-    mq.addEventListener("change", apply);
-    return () => mq.removeEventListener("change", apply);
   }, [theme]);
 
   const setTheme = (t: Theme) => {
