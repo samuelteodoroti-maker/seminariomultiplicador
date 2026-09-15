@@ -40,15 +40,43 @@ export const Route = createFileRoute("/")({
 const INSCRICAO_URL =
   "https://docs.google.com/forms/d/e/1FAIpQLSd_FXumqagFpFB14oDqXOgmRRNaQliiftQqzplHdrx6uC4hhw/viewform?utm_source=ig&utm_medium=social&utm_content=link_in_bio";
 
-const NAV = [
-  { href: "#home", label: "Home" },
-  { href: "#historia", label: "Nossa História" },
-  { href: "#cursos", label: "Curso" },
-  { href: "#polos", label: "Localização" },
-  { href: "#contato", label: "Contato" },
+type NavChild = { href: string; label: string; desc?: string };
+type NavItem = { label: string; href?: string; children?: NavChild[] };
+
+const NAV: NavItem[] = [
+  { label: "Início", href: "#home" },
+  {
+    label: "Sobre o Seminário",
+    children: [
+      { href: "#historia", label: "Nossa História", desc: "Trajetória desde 2019" },
+      { href: "#filiacao", label: "Filiação ABIBET", desc: "Reconhecimento institucional" },
+    ],
+  },
+  {
+    label: "Formação",
+    children: [
+      { href: "#cursos", label: "Teologia Cristã", desc: "Sistemática e Bíblica" },
+      { href: "#agenda", label: "Aulas e Atendimento", desc: "Dias, horários e inscrições" },
+    ],
+  },
+  { label: "Localização", href: "#polos" },
+  { label: "Contato", href: "#contato" },
 ];
 
-const SECTION_IDS = ["home", "historia", "cursos", "polos", "contato"];
+const NAV_FLAT: NavChild[] = NAV.flatMap((item) =>
+  item.children ?? (item.href ? [{ href: item.href, label: item.label }] : []),
+);
+
+const SECTION_IDS = [
+  "home",
+  "historia",
+  "cursos",
+  "agenda",
+  "polos",
+  "filiacao",
+  "contato",
+];
+
 
 function HomePage() {
   return (
@@ -57,11 +85,13 @@ function HomePage() {
       <main>
         <Hero />
         <Pillars />
-        <History />
         <Courses />
+        <Agenda />
+        <History />
         <Hubs />
         <Affiliation />
         <Contact />
+
       </main>
       <Footer />
       <FloatingWhatsApp />
@@ -277,30 +307,80 @@ function Nav() {
 
         <nav className="hidden items-center gap-0.5 lg:flex">
           {NAV.map((item) => {
-            const id = item.href.slice(1);
-            const isActive = active === id;
-            return (
-              <a
-                key={item.href}
-                href={item.href}
-                className={cn(
-                  "relative rounded-md px-3.5 py-2 text-sm font-medium transition-colors",
-                  isActive
-                    ? "text-foreground"
-                    : "text-muted-foreground hover:text-foreground",
-                )}
-              >
-                {item.label}
-                <span
+            const ids = item.children
+              ? item.children.map((c) => c.href.slice(1))
+              : [item.href?.slice(1) ?? ""];
+            const isActive = ids.includes(active);
+
+            if (!item.children) {
+              return (
+                <a
+                  key={item.label}
+                  href={item.href}
                   className={cn(
-                    "absolute inset-x-3.5 -bottom-0.5 h-0.5 rounded-full bg-gold transition-all duration-300",
-                    isActive ? "opacity-100 scale-x-100" : "opacity-0 scale-x-0",
+                    "relative rounded-md px-3.5 py-2 text-sm font-medium transition-colors",
+                    isActive
+                      ? "text-foreground"
+                      : "text-muted-foreground hover:text-foreground",
                   )}
-                />
-              </a>
+                >
+                  {item.label}
+                  <span
+                    className={cn(
+                      "absolute inset-x-3.5 -bottom-0.5 h-0.5 rounded-full bg-gold transition-all duration-300",
+                      isActive ? "opacity-100 scale-x-100" : "opacity-0 scale-x-0",
+                    )}
+                  />
+                </a>
+              );
+            }
+
+            return (
+              <div key={item.label} className="group relative">
+                <button
+                  type="button"
+                  aria-haspopup="true"
+                  className={cn(
+                    "relative inline-flex items-center gap-1 rounded-md px-3.5 py-2 text-sm font-medium transition-colors",
+                    isActive
+                      ? "text-foreground"
+                      : "text-muted-foreground hover:text-foreground",
+                  )}
+                >
+                  {item.label}
+                  <ChevronDown className="h-3.5 w-3.5 transition-transform duration-200 group-hover:rotate-180" />
+                  <span
+                    className={cn(
+                      "absolute inset-x-3.5 -bottom-0.5 h-0.5 rounded-full bg-gold transition-all duration-300",
+                      isActive ? "opacity-100 scale-x-100" : "opacity-0 scale-x-0",
+                    )}
+                  />
+                </button>
+                <div className="invisible absolute left-0 top-full z-50 pt-2 opacity-0 transition-all duration-200 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
+                  <div className="w-64 rounded-xl border border-border bg-popover p-1.5 shadow-xl">
+                    {item.children.map((c) => (
+                      <a
+                        key={c.href}
+                        href={c.href}
+                        className="block rounded-lg px-3 py-2.5 transition-colors hover:bg-accent focus-visible:bg-accent"
+                      >
+                        <span className="block text-sm font-medium text-foreground">
+                          {c.label}
+                        </span>
+                        {c.desc && (
+                          <span className="mt-0.5 block text-xs text-muted-foreground">
+                            {c.desc}
+                          </span>
+                        )}
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              </div>
             );
           })}
         </nav>
+
 
         <div className="flex items-center gap-2">
           <div className="hidden lg:flex lg:items-center">
@@ -341,21 +421,43 @@ function Nav() {
       <div
         className={cn(
           "overflow-hidden border-t border-border/60 bg-background/95 backdrop-blur-lg transition-[max-height,opacity] duration-300",
-          open ? "max-h-[500px] opacity-100" : "pointer-events-none max-h-0 opacity-0",
+          open
+            ? "max-h-[85vh] overflow-y-auto opacity-100"
+            : "pointer-events-none max-h-0 opacity-0",
         )}
       >
         <div className="mx-auto flex max-w-7xl flex-col gap-1 px-4 py-4">
-          {NAV.map((item) => (
-            <a
-              key={item.href}
-              href={item.href}
-              onClick={() => setOpen(false)}
-              className="flex items-center justify-between rounded-lg px-3 py-3 text-[15px] font-medium text-foreground transition-colors hover:bg-accent"
-            >
-              {item.label}
-              <ChevronRight className="h-4 w-4 text-muted-foreground" />
-            </a>
-          ))}
+          {NAV.map((item) =>
+            item.children ? (
+              <div key={item.label} className="py-1">
+                <p className="px-3 pb-1 pt-2 text-[11px] font-semibold uppercase tracking-[0.22em] text-muted-foreground">
+                  {item.label}
+                </p>
+                {item.children.map((c) => (
+                  <a
+                    key={c.href}
+                    href={c.href}
+                    onClick={() => setOpen(false)}
+                    className="flex items-center justify-between rounded-lg px-3 py-3 text-[15px] font-medium text-foreground transition-colors hover:bg-accent"
+                  >
+                    {c.label}
+                    <ChevronRight className="h-4 w-4 text-muted-foreground" />
+                  </a>
+                ))}
+              </div>
+            ) : (
+              <a
+                key={item.label}
+                href={item.href}
+                onClick={() => setOpen(false)}
+                className="flex items-center justify-between rounded-lg px-3 py-3 text-[15px] font-medium text-foreground transition-colors hover:bg-accent"
+              >
+                {item.label}
+                <ChevronRight className="h-4 w-4 text-muted-foreground" />
+              </a>
+            ),
+          )}
+
           <Button
             asChild
             size="lg"
@@ -704,7 +806,93 @@ function Courses() {
   );
 }
 
+/* ---------------- Agenda ---------------- */
+
+function Agenda() {
+  const items = [
+    {
+      Icon: Calendar,
+      label: "Dias de aula",
+      value: "Terças, quintas e sábados",
+      detail: "Período noturno",
+    },
+    {
+      Icon: Clock,
+      label: "Atendimento",
+      value: "Terça a sábado",
+      detail: "A partir das 14h",
+    },
+    {
+      Icon: GraduationCap,
+      label: "Modalidade",
+      value: "100% presencial",
+      detail: "Sede em Bangu — RJ",
+    },
+  ];
+
+  return (
+    <section
+      id="agenda"
+      className="scroll-mt-24 border-b border-border/70 bg-background py-24 sm:py-28"
+    >
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <SectionHeader
+          align="center"
+          eyebrow="Aulas e Atendimento"
+          title="Quando acontecem as aulas."
+          description="Confira os dias de aula e os horários de atendimento antes de realizar sua inscrição."
+        />
+
+        <div className="mx-auto mt-14 grid max-w-5xl gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {items.map((it, i) => (
+            <Reveal key={it.label} delay={i * 90}>
+              <Card className="h-full border-border/70 bg-card transition-all duration-300 hover:-translate-y-1 hover:border-gold/50 hover:shadow-lg hover:shadow-primary/5">
+                <CardContent className="p-7">
+                  <div className="inline-grid h-11 w-11 place-items-center rounded-xl bg-primary/10 text-primary">
+                    <it.Icon className="h-5 w-5" />
+                  </div>
+                  <p className="mt-5 text-[11px] font-semibold uppercase tracking-[0.2em] text-gold">
+                    {it.label}
+                  </p>
+                  <h3 className="mt-1.5 font-display text-xl font-semibold text-balance">
+                    {it.value}
+                  </h3>
+                  <p className="mt-1.5 text-sm text-muted-foreground">
+                    {it.detail}
+                  </p>
+                </CardContent>
+              </Card>
+            </Reveal>
+          ))}
+        </div>
+
+        <div className="mt-12 flex flex-col items-center justify-center gap-3 sm:flex-row">
+          <Button
+            asChild
+            size="lg"
+            className="h-12 rounded-full bg-primary px-7 text-primary-foreground shadow-md shadow-primary/20 transition-all hover:-translate-y-0.5 hover:bg-primary/90"
+          >
+            <a href={INSCRICAO_URL} target="_blank" rel="noreferrer">
+              Fazer minha inscrição
+              <ArrowRight className="ml-1.5 h-4 w-4" />
+            </a>
+          </Button>
+          <Button
+            asChild
+            size="lg"
+            variant="outline"
+            className="h-12 rounded-full border-border bg-background px-7 hover:bg-accent"
+          >
+            <a href="#contato">Falar com a secretaria</a>
+          </Button>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 /* ---------------- Location ---------------- */
+
 
 function Hubs() {
   return (
@@ -782,8 +970,10 @@ function Hubs() {
 function Affiliation() {
   return (
     <section
+      id="filiacao"
       aria-label="Filiação institucional"
-      className="border-b border-border/70 bg-background py-16 sm:py-20"
+      className="scroll-mt-24 border-b border-border/70 bg-background py-16 sm:py-20"
+
     >
       <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
         <Reveal className="flex flex-col items-center gap-8 rounded-3xl border border-border/70 bg-card/50 p-8 text-center shadow-sm sm:p-10 md:flex-row md:text-left">
@@ -965,7 +1155,7 @@ function Footer() {
               Navegação
             </p>
             <ul className="mt-4 grid grid-cols-2 gap-2 text-sm">
-              {NAV.map((n) => (
+              {NAV_FLAT.map((n) => (
                 <li key={n.href}>
                   <a
                     href={n.href}
