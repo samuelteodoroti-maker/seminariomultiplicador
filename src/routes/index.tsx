@@ -40,15 +40,43 @@ export const Route = createFileRoute("/")({
 const INSCRICAO_URL =
   "https://docs.google.com/forms/d/e/1FAIpQLSd_FXumqagFpFB14oDqXOgmRRNaQliiftQqzplHdrx6uC4hhw/viewform?utm_source=ig&utm_medium=social&utm_content=link_in_bio";
 
-const NAV = [
-  { href: "#home", label: "Home" },
-  { href: "#historia", label: "Nossa História" },
-  { href: "#cursos", label: "Curso" },
-  { href: "#polos", label: "Localização" },
-  { href: "#contato", label: "Contato" },
+type NavChild = { href: string; label: string; desc?: string };
+type NavItem = { label: string; href?: string; children?: NavChild[] };
+
+const NAV: NavItem[] = [
+  { label: "Início", href: "#home" },
+  {
+    label: "Sobre o Seminário",
+    children: [
+      { href: "#historia", label: "Nossa História", desc: "Trajetória desde 2019" },
+      { href: "#filiacao", label: "Filiação ABIBET", desc: "Reconhecimento institucional" },
+    ],
+  },
+  {
+    label: "Formação",
+    children: [
+      { href: "#cursos", label: "Teologia Cristã", desc: "Sistemática e Bíblica" },
+      { href: "#agenda", label: "Aulas e Atendimento", desc: "Dias, horários e inscrições" },
+    ],
+  },
+  { label: "Localização", href: "#polos" },
+  { label: "Contato", href: "#contato" },
 ];
 
-const SECTION_IDS = ["home", "historia", "cursos", "polos", "contato"];
+const NAV_FLAT: NavChild[] = NAV.flatMap((item) =>
+  item.children ?? (item.href ? [{ href: item.href, label: item.label }] : []),
+);
+
+const SECTION_IDS = [
+  "home",
+  "historia",
+  "cursos",
+  "agenda",
+  "polos",
+  "filiacao",
+  "contato",
+];
+
 
 function HomePage() {
   return (
