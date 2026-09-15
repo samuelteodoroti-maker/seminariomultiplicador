@@ -305,30 +305,80 @@ function Nav() {
 
         <nav className="hidden items-center gap-0.5 lg:flex">
           {NAV.map((item) => {
-            const id = item.href.slice(1);
-            const isActive = active === id;
-            return (
-              <a
-                key={item.href}
-                href={item.href}
-                className={cn(
-                  "relative rounded-md px-3.5 py-2 text-sm font-medium transition-colors",
-                  isActive
-                    ? "text-foreground"
-                    : "text-muted-foreground hover:text-foreground",
-                )}
-              >
-                {item.label}
-                <span
+            const ids = item.children
+              ? item.children.map((c) => c.href.slice(1))
+              : [item.href?.slice(1) ?? ""];
+            const isActive = ids.includes(active);
+
+            if (!item.children) {
+              return (
+                <a
+                  key={item.label}
+                  href={item.href}
                   className={cn(
-                    "absolute inset-x-3.5 -bottom-0.5 h-0.5 rounded-full bg-gold transition-all duration-300",
-                    isActive ? "opacity-100 scale-x-100" : "opacity-0 scale-x-0",
+                    "relative rounded-md px-3.5 py-2 text-sm font-medium transition-colors",
+                    isActive
+                      ? "text-foreground"
+                      : "text-muted-foreground hover:text-foreground",
                   )}
-                />
-              </a>
+                >
+                  {item.label}
+                  <span
+                    className={cn(
+                      "absolute inset-x-3.5 -bottom-0.5 h-0.5 rounded-full bg-gold transition-all duration-300",
+                      isActive ? "opacity-100 scale-x-100" : "opacity-0 scale-x-0",
+                    )}
+                  />
+                </a>
+              );
+            }
+
+            return (
+              <div key={item.label} className="group relative">
+                <button
+                  type="button"
+                  aria-haspopup="true"
+                  className={cn(
+                    "relative inline-flex items-center gap-1 rounded-md px-3.5 py-2 text-sm font-medium transition-colors",
+                    isActive
+                      ? "text-foreground"
+                      : "text-muted-foreground hover:text-foreground",
+                  )}
+                >
+                  {item.label}
+                  <ChevronDown className="h-3.5 w-3.5 transition-transform duration-200 group-hover:rotate-180" />
+                  <span
+                    className={cn(
+                      "absolute inset-x-3.5 -bottom-0.5 h-0.5 rounded-full bg-gold transition-all duration-300",
+                      isActive ? "opacity-100 scale-x-100" : "opacity-0 scale-x-0",
+                    )}
+                  />
+                </button>
+                <div className="invisible absolute left-0 top-full z-50 pt-2 opacity-0 transition-all duration-200 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
+                  <div className="w-64 rounded-xl border border-border bg-popover p-1.5 shadow-xl">
+                    {item.children.map((c) => (
+                      <a
+                        key={c.href}
+                        href={c.href}
+                        className="block rounded-lg px-3 py-2.5 transition-colors hover:bg-accent focus-visible:bg-accent"
+                      >
+                        <span className="block text-sm font-medium text-foreground">
+                          {c.label}
+                        </span>
+                        {c.desc && (
+                          <span className="mt-0.5 block text-xs text-muted-foreground">
+                            {c.desc}
+                          </span>
+                        )}
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              </div>
             );
           })}
         </nav>
+
 
         <div className="flex items-center gap-2">
           <div className="hidden lg:flex lg:items-center">
