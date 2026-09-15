@@ -884,8 +884,10 @@ function Hubs() {
 function Affiliation() {
   return (
     <section
+      id="filiacao"
       aria-label="Filiação institucional"
-      className="border-b border-border/70 bg-background py-16 sm:py-20"
+      className="scroll-mt-24 border-b border-border/70 bg-background py-16 sm:py-20"
+
     >
       <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
         <Reveal className="flex flex-col items-center gap-8 rounded-3xl border border-border/70 bg-card/50 p-8 text-center shadow-sm sm:p-10 md:flex-row md:text-left">
@@ -1067,7 +1069,7 @@ function Footer() {
               Navegação
             </p>
             <ul className="mt-4 grid grid-cols-2 gap-2 text-sm">
-              {NAV.map((n) => (
+              {NAV_FLAT.map((n) => (
                 <li key={n.href}>
                   <a
                     href={n.href}
