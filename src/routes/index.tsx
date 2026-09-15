@@ -85,11 +85,13 @@ function HomePage() {
       <main>
         <Hero />
         <Pillars />
-        <History />
         <Courses />
+        <Agenda />
+        <History />
         <Hubs />
         <Affiliation />
         <Contact />
+
       </main>
       <Footer />
       <FloatingWhatsApp />
