@@ -419,21 +419,43 @@ function Nav() {
       <div
         className={cn(
           "overflow-hidden border-t border-border/60 bg-background/95 backdrop-blur-lg transition-[max-height,opacity] duration-300",
-          open ? "max-h-[500px] opacity-100" : "pointer-events-none max-h-0 opacity-0",
+          open
+            ? "max-h-[85vh] overflow-y-auto opacity-100"
+            : "pointer-events-none max-h-0 opacity-0",
         )}
       >
         <div className="mx-auto flex max-w-7xl flex-col gap-1 px-4 py-4">
-          {NAV.map((item) => (
-            <a
-              key={item.href}
-              href={item.href}
-              onClick={() => setOpen(false)}
-              className="flex items-center justify-between rounded-lg px-3 py-3 text-[15px] font-medium text-foreground transition-colors hover:bg-accent"
-            >
-              {item.label}
-              <ChevronRight className="h-4 w-4 text-muted-foreground" />
-            </a>
-          ))}
+          {NAV.map((item) =>
+            item.children ? (
+              <div key={item.label} className="py-1">
+                <p className="px-3 pb-1 pt-2 text-[11px] font-semibold uppercase tracking-[0.22em] text-muted-foreground">
+                  {item.label}
+                </p>
+                {item.children.map((c) => (
+                  <a
+                    key={c.href}
+                    href={c.href}
+                    onClick={() => setOpen(false)}
+                    className="flex items-center justify-between rounded-lg px-3 py-3 text-[15px] font-medium text-foreground transition-colors hover:bg-accent"
+                  >
+                    {c.label}
+                    <ChevronRight className="h-4 w-4 text-muted-foreground" />
+                  </a>
+                ))}
+              </div>
+            ) : (
+              <a
+                key={item.label}
+                href={item.href}
+                onClick={() => setOpen(false)}
+                className="flex items-center justify-between rounded-lg px-3 py-3 text-[15px] font-medium text-foreground transition-colors hover:bg-accent"
+              >
+                {item.label}
+                <ChevronRight className="h-4 w-4 text-muted-foreground" />
+              </a>
+            ),
+          )}
+
           <Button
             asChild
             size="lg"
