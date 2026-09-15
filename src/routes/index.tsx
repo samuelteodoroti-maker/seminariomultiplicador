@@ -806,7 +806,93 @@ function Courses() {
   );
 }
 
+/* ---------------- Agenda ---------------- */
+
+function Agenda() {
+  const items = [
+    {
+      Icon: Calendar,
+      label: "Dias de aula",
+      value: "Terças, quintas e sábados",
+      detail: "Período noturno",
+    },
+    {
+      Icon: Clock,
+      label: "Atendimento",
+      value: "Terça a sábado",
+      detail: "A partir das 14h",
+    },
+    {
+      Icon: GraduationCap,
+      label: "Modalidade",
+      value: "100% presencial",
+      detail: "Sede em Bangu — RJ",
+    },
+  ];
+
+  return (
+    <section
+      id="agenda"
+      className="scroll-mt-24 border-b border-border/70 bg-background py-24 sm:py-28"
+    >
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <SectionHeader
+          align="center"
+          eyebrow="Aulas e Atendimento"
+          title="Quando acontecem as aulas."
+          description="Confira os dias de aula e os horários de atendimento antes de realizar sua inscrição."
+        />
+
+        <div className="mx-auto mt-14 grid max-w-5xl gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {items.map((it, i) => (
+            <Reveal key={it.label} delay={i * 90}>
+              <Card className="h-full border-border/70 bg-card transition-all duration-300 hover:-translate-y-1 hover:border-gold/50 hover:shadow-lg hover:shadow-primary/5">
+                <CardContent className="p-7">
+                  <div className="inline-grid h-11 w-11 place-items-center rounded-xl bg-primary/10 text-primary">
+                    <it.Icon className="h-5 w-5" />
+                  </div>
+                  <p className="mt-5 text-[11px] font-semibold uppercase tracking-[0.2em] text-gold">
+                    {it.label}
+                  </p>
+                  <h3 className="mt-1.5 font-display text-xl font-semibold text-balance">
+                    {it.value}
+                  </h3>
+                  <p className="mt-1.5 text-sm text-muted-foreground">
+                    {it.detail}
+                  </p>
+                </CardContent>
+              </Card>
+            </Reveal>
+          ))}
+        </div>
+
+        <div className="mt-12 flex flex-col items-center justify-center gap-3 sm:flex-row">
+          <Button
+            asChild
+            size="lg"
+            className="h-12 rounded-full bg-primary px-7 text-primary-foreground shadow-md shadow-primary/20 transition-all hover:-translate-y-0.5 hover:bg-primary/90"
+          >
+            <a href={INSCRICAO_URL} target="_blank" rel="noreferrer">
+              Fazer minha inscrição
+              <ArrowRight className="ml-1.5 h-4 w-4" />
+            </a>
+          </Button>
+          <Button
+            asChild
+            size="lg"
+            variant="outline"
+            className="h-12 rounded-full border-border bg-background px-7 hover:bg-accent"
+          >
+            <a href="#contato">Falar com a secretaria</a>
+          </Button>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 /* ---------------- Location ---------------- */
+
 
 function Hubs() {
   return (
