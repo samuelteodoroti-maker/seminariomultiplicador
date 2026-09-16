@@ -318,24 +318,27 @@ function Nav() {
           : "border-b border-transparent bg-transparent",
       )}
     >
-      <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8">
+      <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-2.5 sm:px-6 lg:px-8">
         <a
           href="#home"
-          className="group flex min-w-0 items-center gap-3 rounded-lg"
+          className="group flex shrink-0 items-center gap-2.5 rounded-lg"
         >
-          <LogoMark className="h-11 w-11 shrink-0 transition-transform group-hover:scale-105" />
-          <span className="flex min-w-0 flex-col leading-tight">
-            <span className="truncate font-display text-base font-bold sm:text-lg">
-              <span className="sm:hidden">Multiplicador</span>
-              <span className="hidden sm:inline">Seminário Teológico Batista Multiplicador</span>
+          <LogoMark className="h-10 w-10 shrink-0 transition-transform group-hover:scale-105 sm:h-11 sm:w-11" />
+          <span className="flex flex-col leading-[1.15]">
+            <span className="font-display text-base font-bold sm:text-[17px] xl:hidden">
+              Multiplicador
             </span>
-            <span className="hidden text-[10px] font-medium uppercase tracking-[0.22em] text-muted-foreground sm:block">
+            <span className="hidden font-display text-[15px] font-bold leading-[1.15] xl:block">
+              <span className="block">Seminário Teológico Batista</span>
+              <span className="block">Multiplicador</span>
+            </span>
+            <span className="hidden text-[10px] font-medium uppercase tracking-[0.2em] text-muted-foreground sm:block xl:hidden">
               Teológico · Rio de Janeiro
             </span>
           </span>
         </a>
 
-        <nav aria-label="Navegação principal" className="hidden items-center gap-0.5 lg:flex">
+        <nav aria-label="Navegação principal" className="hidden min-w-0 items-center gap-0.5 xl:flex">
           {NAV.map((item) => {
             const ids = item.children
               ? item.children.map((c) => c.href.slice(1))
@@ -349,7 +352,7 @@ function Nav() {
                   href={item.href}
                   aria-current={isActive ? "true" : undefined}
                   className={cn(
-                    "relative rounded-md px-3.5 py-2 text-sm font-medium transition-colors",
+                    "relative rounded-md px-3 py-2 text-sm font-medium transition-colors",
                     isActive
                       ? "text-foreground"
                       : "text-muted-foreground hover:text-foreground",
@@ -358,7 +361,7 @@ function Nav() {
                   {item.label}
                   <span
                     className={cn(
-                      "absolute inset-x-3.5 -bottom-0.5 h-0.5 rounded-full bg-gold transition-all duration-300",
+                      "absolute inset-x-3 -bottom-0.5 h-0.5 rounded-full bg-gold transition-all duration-300",
                       isActive ? "opacity-100 scale-x-100" : "opacity-0 scale-x-0",
                     )}
                   />
@@ -372,7 +375,7 @@ function Nav() {
                   <Button
                     variant="ghost"
                     className={cn(
-                      "relative h-10 gap-1 px-3.5 text-sm font-medium",
+                      "relative h-10 gap-1 px-3 text-sm font-medium",
                       isActive ? "text-foreground" : "text-muted-foreground",
                     )}
                   >
@@ -380,7 +383,7 @@ function Nav() {
                     <ChevronDown className="h-3.5 w-3.5" />
                     <span
                       className={cn(
-                        "absolute inset-x-3.5 bottom-0 h-0.5 rounded-full bg-gold transition-transform duration-300",
+                        "absolute inset-x-3 bottom-0 h-0.5 rounded-full bg-gold transition-transform duration-300",
                         isActive ? "scale-x-100" : "scale-x-0",
                       )}
                     />
@@ -402,14 +405,14 @@ function Nav() {
         </nav>
 
 
-        <div className="flex items-center gap-2">
-          <div className="hidden lg:flex lg:items-center">
+        <div className="flex shrink-0 items-center gap-1.5">
+          <div className="hidden xl:flex xl:items-center">
             <ThemeToggle />
           </div>
           <Button
             asChild
             size="sm"
-            className="hidden h-9 rounded-full bg-primary px-4 text-primary-foreground shadow-sm hover:bg-primary/90 sm:inline-flex"
+            className="hidden h-9 rounded-full bg-primary px-3.5 text-[13px] text-primary-foreground shadow-sm hover:bg-primary/90 sm:inline-flex"
           >
             <a href={INSCRICAO_URL} target="_blank" rel="noreferrer">
               Inscreva-se <ArrowRight className="ml-1.5 h-3.5 w-3.5" />
@@ -419,7 +422,7 @@ function Nav() {
             asChild
             variant="outline"
             size="sm"
-            className="hidden h-9 rounded-full border-border bg-background/70 px-4 text-[13px] font-medium text-foreground backdrop-blur transition-colors hover:bg-accent sm:inline-flex"
+            className="hidden h-9 rounded-full border-border bg-background/70 px-3.5 text-[13px] font-medium text-foreground backdrop-blur transition-colors hover:bg-accent sm:inline-flex"
           >
             <a href="https://portalmultiplicador.lovable.app" target="_blank" rel="noreferrer">
               <LogIn className="mr-1.5 h-3.5 w-3.5" />
@@ -432,7 +435,7 @@ function Nav() {
                 variant="outline"
                 size="icon"
                 aria-label="Abrir menu"
-                className="h-10 w-10 shrink-0 bg-card/70"
+                className="h-10 w-10 shrink-0 bg-card/70 xl:hidden"
               >
                 <Menu className="h-5 w-5" />
               </Button>
@@ -514,13 +517,13 @@ function Hero() {
     >
       <div className="absolute inset-0 -z-10 bg-grid-pattern opacity-50" />
 
-      <div className="mx-auto max-w-7xl px-4 pb-24 pt-16 sm:px-6 sm:pb-28 sm:pt-24 lg:px-8 lg:pb-36 lg:pt-32">
+      <div className="mx-auto max-w-7xl px-4 pb-20 pt-8 sm:px-6 sm:pb-24 sm:pt-12 lg:px-8 lg:pb-28 lg:pt-16">
         <div className="mx-auto max-w-4xl text-center animate-fade-up">
-          <LogoMark variant="light" className="mx-auto mb-8 h-24 w-24 rounded-full bg-logo-surface p-3 shadow-xl shadow-primary/20 ring-1 ring-border sm:h-28 sm:w-28" />
+          <LogoMark variant="light" className="mx-auto mb-5 h-20 w-20 rounded-full bg-logo-surface p-3 shadow-xl shadow-primary/20 ring-1 ring-border sm:h-24 sm:w-24" />
 
           <Badge
             variant="outline"
-            className="mb-8 rounded-full border-gold/40 bg-gold/10 px-4 py-1.5 text-xs font-medium tracking-wide text-foreground backdrop-blur"
+            className="mb-5 rounded-full border-gold/40 bg-gold/10 px-4 py-1.5 text-xs font-medium tracking-wide text-foreground backdrop-blur"
           >
             <Sparkles className="mr-2 h-3.5 w-3.5 text-gold" />
             Formação Ministerial · Desde 2019
