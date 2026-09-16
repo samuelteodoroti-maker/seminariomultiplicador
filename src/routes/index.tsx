@@ -370,7 +370,7 @@ function Nav() {
             }
 
             return (
-              <DropdownMenu key={item.label}>
+              <DropdownMenu key={item.label} modal={false}>
                 <DropdownMenuTrigger asChild>
                   <Button
                     variant="ghost"
