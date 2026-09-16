@@ -120,8 +120,12 @@
   }
   h1, h2, h3, h4 {
     font-family: var(--font-display);
-    letter-spacing: 0;
+    letter-spacing: -0.005em;
     color: var(--foreground);
+    text-wrap: balance;
+  }
+  p, li {
+    text-wrap: pretty;
   }
   ::selection {
     background-color: color-mix(in oklab, var(--gold) 40%, transparent);
@@ -196,7 +200,8 @@
 @media (prefers-reduced-motion: reduce) {
   .reveal { opacity: 1; transform: none; transition: none; }
   html { scroll-behavior: auto; }
-  .animate-fade-up, .animate-scroll-cue { animation: none !important; }
+  .animate-fade-up, .animate-scroll-cue, .animate-ping { animation: none !important; }
+  * { transition-duration: 0.01ms !important; }
 }
 
 

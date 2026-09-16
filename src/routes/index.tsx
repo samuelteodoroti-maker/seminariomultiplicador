@@ -112,8 +112,14 @@ const SECTION_IDS = [
 function HomePage() {
   return (
     <div className="min-h-screen bg-background text-foreground antialiased transition-colors duration-300">
+      <a
+        href="#conteudo"
+        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-full focus:bg-primary focus:px-5 focus:py-2.5 focus:text-sm focus:font-semibold focus:text-primary-foreground focus:shadow-lg"
+      >
+        Ir para o conteúdo
+      </a>
       <Nav />
-      <main>
+      <main id="conteudo">
         <Hero />
         <Pillars />
         <Courses />
@@ -329,7 +335,7 @@ function Nav() {
           </span>
         </a>
 
-        <nav className="hidden items-center gap-0.5 lg:flex">
+        <nav aria-label="Navegação principal" className="hidden items-center gap-0.5 lg:flex">
           {NAV.map((item) => {
             const ids = item.children
               ? item.children.map((c) => c.href.slice(1))
@@ -341,6 +347,7 @@ function Nav() {
                 <a
                   key={item.label}
                   href={item.href}
+                  aria-current={isActive ? "true" : undefined}
                   className={cn(
                     "relative rounded-md px-3.5 py-2 text-sm font-medium transition-colors",
                     isActive
@@ -1129,7 +1136,7 @@ function ContactItem({
 
 function Footer() {
   return (
-    <footer className="border-t border-border bg-background py-14">
+    <footer className="border-t border-border bg-background pb-28 pt-14 sm:pb-14">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid gap-10 md:grid-cols-3">
           <div>
@@ -1150,34 +1157,44 @@ function Footer() {
             </p>
           </div>
 
-          <div>
+          <nav aria-label="Navegação do rodapé">
             <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-muted-foreground">
               Navegação
             </p>
-            <ul className="mt-4 grid grid-cols-2 gap-2 text-sm">
+            <ul className="mt-2 grid grid-cols-2 gap-x-2 text-sm">
               {NAV_FLAT.map((n) => (
                 <li key={n.href}>
                   <a
                     href={n.href}
-                    className="text-foreground/80 transition-colors hover:text-gold"
+                    className="inline-flex min-h-10 items-center rounded-md text-foreground/80 transition-colors hover:text-gold"
                   >
                     {n.label}
                   </a>
                 </li>
               ))}
             </ul>
-          </div>
+          </nav>
 
           <div>
             <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-muted-foreground">
               Fale conosco
             </p>
             <ul className="mt-4 space-y-2.5 text-sm text-foreground/80">
-              <li className="flex items-center gap-2">
-                <Phone className="h-4 w-4 text-gold" /> (21) 97180-3049
+              <li>
+                <a
+                  href="tel:+5521971803049"
+                  className="inline-flex min-h-10 items-center gap-2 rounded-md transition-colors hover:text-gold"
+                >
+                  <Phone className="h-4 w-4 text-gold" /> (21) 97180-3049
+                </a>
               </li>
-              <li className="flex items-center gap-2">
-                <Mail className="h-4 w-4 text-gold" /> contato@multiplicadorrj.com.br
+              <li>
+                <a
+                  href="mailto:contato@multiplicadorrj.com.br"
+                  className="inline-flex min-h-10 items-center gap-2 break-all rounded-md transition-colors hover:text-gold"
+                >
+                  <Mail className="h-4 w-4 shrink-0 text-gold" /> contato@multiplicadorrj.com.br
+                </a>
               </li>
               <li className="flex items-start gap-2">
                 <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-gold" />
