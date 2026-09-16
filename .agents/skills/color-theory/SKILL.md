@@ -1,5 +1,5 @@
 ---
-name: Color Theory
+name: color-theory
 description: "Guia completo de cor para projetos web: regra 60-30-10, cores semânticas (sucesso/alerta/erro), validação de contraste WCAG (mínimo 4.5:1), sistema de design tokens e implementação de dark mode. Cobre modelos de cor, harmonias, psicologia das cores e garante acessibilidade visual em todas as combinações usadas no projeto."
 ---
 
