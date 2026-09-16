@@ -88,11 +88,9 @@ function AlunoPage() {
             <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-primary">
               <LogIn className="h-6 w-6" />
             </div>
-            <CardTitle asChild className="font-display text-2xl font-bold text-foreground sm:text-3xl">
-              <h1>
+            <h1 className="font-display text-2xl font-bold text-foreground sm:text-3xl">
               Portal do Aluno
-              </h1>
-            </CardTitle>
+            </h1>
             <CardDescription className="text-sm text-muted-foreground">
               Acesso exclusivo para alunos matriculados no Seminário Teológico Batista Multiplicador.
             </CardDescription>
