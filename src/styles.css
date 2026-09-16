@@ -120,8 +120,12 @@
   }
   h1, h2, h3, h4 {
     font-family: var(--font-display);
-    letter-spacing: 0;
+    letter-spacing: -0.005em;
     color: var(--foreground);
+    text-wrap: balance;
+  }
+  p, li {
+    text-wrap: pretty;
   }
   ::selection {
     background-color: color-mix(in oklab, var(--gold) 40%, transparent);
