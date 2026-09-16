@@ -405,14 +405,14 @@ function Nav() {
         </nav>
 
 
-        <div className="flex items-center gap-2">
-          <div className="hidden lg:flex lg:items-center">
+        <div className="flex shrink-0 items-center gap-1.5">
+          <div className="hidden xl:flex xl:items-center">
             <ThemeToggle />
           </div>
           <Button
             asChild
             size="sm"
-            className="hidden h-9 rounded-full bg-primary px-4 text-primary-foreground shadow-sm hover:bg-primary/90 sm:inline-flex"
+            className="hidden h-9 rounded-full bg-primary px-3.5 text-[13px] text-primary-foreground shadow-sm hover:bg-primary/90 sm:inline-flex"
           >
             <a href={INSCRICAO_URL} target="_blank" rel="noreferrer">
               Inscreva-se <ArrowRight className="ml-1.5 h-3.5 w-3.5" />
