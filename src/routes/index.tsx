@@ -335,7 +335,7 @@ function Nav() {
           </span>
         </a>
 
-        <nav className="hidden items-center gap-0.5 lg:flex">
+        <nav aria-label="Navegação principal" className="hidden items-center gap-0.5 lg:flex">
           {NAV.map((item) => {
             const ids = item.children
               ? item.children.map((c) => c.href.slice(1))
@@ -347,6 +347,7 @@ function Nav() {
                 <a
                   key={item.label}
                   href={item.href}
+                  aria-current={isActive ? "true" : undefined}
                   className={cn(
                     "relative rounded-md px-3.5 py-2 text-sm font-medium transition-colors",
                     isActive
