@@ -78,23 +78,21 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Seminário Teológico Batista Multiplicador — Invista em seu chamado" },
+      { title: "Seminário Teológico Batista Multiplicador" },
       {
         name: "description",
         content:
-          "Seminário Teológico Batista Multiplicador: formação bíblica e ministerial de excelência no Rio de Janeiro. Teologia, Educação Cristã e Ministério de Adoração.",
+          "Formação bíblica e ministerial presencial do Seminário Teológico Batista Multiplicador, em Bangu, Rio de Janeiro.",
       },
-      { property: "og:title", content: "Seminário Teológico Batista Multiplicador — Invista em seu chamado" },
+      { property: "og:title", content: "Seminário Teológico Batista Multiplicador" },
       {
         property: "og:description",
-        content: "Seminário Teológico Batista Multiplicador: formação bíblica e ministerial de excelência no Rio de Janeiro. Teologia, Educação Cristã e Ministério de Adoração.",
+        content: "Formação bíblica e ministerial presencial em Bangu, Rio de Janeiro.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "Seminário Teológico Batista Multiplicador — Invista em seu chamado" },
-      { name: "twitter:description", content: "Seminário Teológico Batista Multiplicador: formação bíblica e ministerial de excelência no Rio de Janeiro. Teologia, Educação Cristã e Ministério de Adoração." },
-      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/874d6293-bf96-43a5-ae2f-905ebb888abb/id-preview-bab0ee27--4c402c81-c2a7-4180-af1a-575f4ecf63b5.lovable.app-1784737459726.png" },
-      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/874d6293-bf96-43a5-ae2f-905ebb888abb/id-preview-bab0ee27--4c402c81-c2a7-4180-af1a-575f4ecf63b5.lovable.app-1784737459726.png" },
+      { name: "twitter:title", content: "Seminário Teológico Batista Multiplicador" },
+      { name: "twitter:description", content: "Formação bíblica e ministerial presencial em Bangu, Rio de Janeiro." },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
@@ -119,7 +117,7 @@ function RootShell({ children }: { children: ReactNode }) {
         <HeadContent />
         <script
           dangerouslySetInnerHTML={{
-            __html: `try{var t=localStorage.getItem('theme');document.documentElement.classList.toggle('dark',t==='dark');}catch(e){}`,
+            __html: `try{var t=localStorage.getItem('theme');var d=t==='dark'||(!t&&matchMedia('(prefers-color-scheme: dark)').matches);document.documentElement.classList.toggle('dark',d);document.documentElement.style.colorScheme=d?'dark':'light';}catch(e){}`,
           }}
         />
       </head>
