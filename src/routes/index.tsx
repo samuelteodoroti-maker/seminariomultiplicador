@@ -42,10 +42,10 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
-import logoAsset from "@/assets/logo-multiplicador.png.asset.json";
-import logoLightAsset from "@/assets/logo-multiplicador-light.webp.asset.json";
-import logoDarkAsset from "@/assets/logo-multiplicador-dark.webp.asset.json";
-import abibetAsset from "@/assets/abibet-logo.png.asset.json";
+import logoAsset from "@/assets/logo-multiplicador.png";
+import logoLightAsset from "@/assets/logo-multiplicador-light.webp";
+import logoDarkAsset from "@/assets/logo-multiplicador-dark.webp";
+import abibetAsset from "@/assets/abibet-logo.png";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -242,7 +242,7 @@ function LogoMark({
   void variant;
   void logoLightAsset;
   void logoDarkAsset;
-  const src = logoAsset.url;
+  const src = logoAsset;
 
   return (
     <img
@@ -996,7 +996,7 @@ function Affiliation() {
             aria-label="ABIBET — Associação Brasileira de Instituições Batistas de Ensino Teológico"
           >
             <img
-              src={abibetAsset.url}
+              src={abibetAsset}
               alt="ABIBET — Associação Brasileira de Instituições Batistas de Ensino Teológico"
               className="h-16 w-auto object-contain sm:h-20"
             />
