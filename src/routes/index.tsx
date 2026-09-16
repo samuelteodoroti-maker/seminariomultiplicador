@@ -9,7 +9,6 @@ import {
   Clock,
   Instagram,
   Menu,
-  X,
   Star,
   Sparkles,
   ArrowRight,
@@ -1025,10 +1024,6 @@ function Contact() {
     <section id="contato" className="scroll-mt-24 py-24 sm:py-32">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="relative overflow-hidden rounded-3xl border border-border bg-gradient-to-br from-primary via-primary to-primary/85 p-8 text-primary-foreground shadow-2xl shadow-primary/20 sm:p-12 lg:p-16 dark:from-card dark:via-card dark:to-background dark:shadow-black/30 dark:[--primary-foreground:oklch(0.96_0.008_210)]">
-          {/* Decorative */}
-          <div className="pointer-events-none absolute -right-24 -top-24 h-64 w-64 rounded-full bg-gold/20 blur-3xl" />
-          <div className="pointer-events-none absolute -bottom-24 -left-24 h-64 w-64 rounded-full bg-gold/10 blur-3xl" />
-
           <div className="relative grid gap-12 lg:grid-cols-2 lg:gap-16">
             <div>
               <div className="inline-flex items-center gap-2.5">
@@ -1037,10 +1032,10 @@ function Contact() {
                   Contato
                 </span>
               </div>
-              <h2 className="mt-5 font-display text-3xl font-bold leading-[1.05] text-balance text-white drop-shadow-sm sm:text-4xl md:text-5xl dark:text-primary-foreground">
+              <h2 className="mt-5 font-display text-3xl font-bold leading-[1.05] text-balance text-primary-foreground sm:text-4xl md:text-5xl">
                 Dê o próximo passo em seu chamado.
               </h2>
-              <p className="mt-5 max-w-md text-base leading-relaxed text-white/85 text-pretty sm:text-lg dark:text-primary-foreground/80">
+              <p className="mt-5 max-w-md text-base leading-relaxed text-primary-foreground/80 text-pretty sm:text-lg">
                 Fale com nossa equipe pelo WhatsApp, e-mail ou visite nossa
                 sede em Bangu. Teremos alegria em atender você.
               </p>
@@ -1049,7 +1044,7 @@ function Contact() {
                 <Button
                   asChild
                   size="lg"
-                  className="h-12 rounded-full bg-gold px-6 text-gold-foreground shadow-lg shadow-black/10 transition-transform hover:-translate-y-0.5 hover:bg-gold/90"
+                    className="h-12 rounded-full bg-gold px-6 text-gold-foreground shadow-lg shadow-primary/20 transition-transform hover:-translate-y-0.5 hover:bg-gold/90"
                 >
                   <a href={INSCRICAO_URL} target="_blank" rel="noreferrer">
                     <Sparkles className="mr-2 h-4 w-4" />
@@ -1204,7 +1199,7 @@ function Footer() {
 
         <div className="mt-12 flex flex-col items-start justify-between gap-3 border-t border-border pt-6 text-xs text-muted-foreground md:flex-row md:items-center">
           <p>
-            © {new Date().getFullYear()} Copyright Seminário Teológico
+            © {new Date().getFullYear()} Copyright Seminário Teológico Batista
             Multiplicador. Todos os direitos reservados.
           </p>
           <p>Atendimento de terça a sábado, a partir das 14h · Aulas terças, quintas e sábados (noite)</p>

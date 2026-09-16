@@ -12,31 +12,27 @@ const ThemeContext = createContext<ThemeCtx | null>(null);
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [theme, setThemeState] = useState<Theme>("light");
-  const [resolved, setResolved] = useState<Theme>("light");
 
   useEffect(() => {
     const stored = localStorage.getItem("theme");
     const systemTheme: Theme = window.matchMedia("(prefers-color-scheme: dark)").matches
       ? "dark"
       : "light";
-    setThemeState(stored === "dark" || stored === "light" ? stored : systemTheme);
+    const initialTheme = stored === "dark" || stored === "light" ? stored : systemTheme;
+    document.documentElement.classList.toggle("dark", initialTheme === "dark");
+    document.documentElement.style.colorScheme = initialTheme;
+    setThemeState(initialTheme);
   }, []);
-
-  useEffect(() => {
-    const apply = () => {
-      setResolved(theme);
-      document.documentElement.classList.toggle("dark", theme === "dark");
-    };
-    apply();
-  }, [theme]);
 
   const setTheme = (t: Theme) => {
     localStorage.setItem("theme", t);
+    document.documentElement.classList.toggle("dark", t === "dark");
+    document.documentElement.style.colorScheme = t;
     setThemeState(t);
   };
 
   return (
-    <ThemeContext.Provider value={{ theme, setTheme, resolved }}>
+    <ThemeContext.Provider value={{ theme, setTheme, resolved: theme }}>
       {children}
     </ThemeContext.Provider>
   );
