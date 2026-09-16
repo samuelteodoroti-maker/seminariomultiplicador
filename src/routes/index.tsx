@@ -992,13 +992,13 @@ function Affiliation() {
             href="https://abibet.org.br"
             target="_blank"
             rel="noreferrer"
-            className="shrink-0 rounded-xl bg-white p-4 shadow-sm ring-1 ring-border transition-transform hover:scale-[1.02]"
+            className="max-w-full rounded-xl bg-white p-4 shadow-sm ring-1 ring-border transition-transform hover:scale-[1.02]"
             aria-label="ABIBET — Associação Brasileira de Instituições Batistas de Ensino Teológico"
           >
             <img
               src={abibetAsset}
               alt="ABIBET — Associação Brasileira de Instituições Batistas de Ensino Teológico"
-              className="h-16 w-auto object-contain sm:h-20"
+              className="h-16 w-auto max-w-full object-contain sm:h-20"
             />
           </a>
           <div className="flex-1">
