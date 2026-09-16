@@ -517,13 +517,13 @@ function Hero() {
     >
       <div className="absolute inset-0 -z-10 bg-grid-pattern opacity-50" />
 
-      <div className="mx-auto max-w-7xl px-4 pb-24 pt-16 sm:px-6 sm:pb-28 sm:pt-24 lg:px-8 lg:pb-36 lg:pt-32">
+      <div className="mx-auto max-w-7xl px-4 pb-20 pt-8 sm:px-6 sm:pb-24 sm:pt-12 lg:px-8 lg:pb-28 lg:pt-16">
         <div className="mx-auto max-w-4xl text-center animate-fade-up">
-          <LogoMark variant="light" className="mx-auto mb-8 h-24 w-24 rounded-full bg-logo-surface p-3 shadow-xl shadow-primary/20 ring-1 ring-border sm:h-28 sm:w-28" />
+          <LogoMark variant="light" className="mx-auto mb-5 h-20 w-20 rounded-full bg-logo-surface p-3 shadow-xl shadow-primary/20 ring-1 ring-border sm:h-24 sm:w-24" />
 
           <Badge
             variant="outline"
-            className="mb-8 rounded-full border-gold/40 bg-gold/10 px-4 py-1.5 text-xs font-medium tracking-wide text-foreground backdrop-blur"
+            className="mb-5 rounded-full border-gold/40 bg-gold/10 px-4 py-1.5 text-xs font-medium tracking-wide text-foreground backdrop-blur"
           >
             <Sparkles className="mr-2 h-3.5 w-3.5 text-gold" />
             Formação Ministerial · Desde 2019
