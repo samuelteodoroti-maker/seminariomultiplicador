@@ -200,7 +200,8 @@
 @media (prefers-reduced-motion: reduce) {
   .reveal { opacity: 1; transform: none; transition: none; }
   html { scroll-behavior: auto; }
-  .animate-fade-up, .animate-scroll-cue { animation: none !important; }
+  .animate-fade-up, .animate-scroll-cue, .animate-ping { animation: none !important; }
+  * { transition-duration: 0.01ms !important; }
 }
 
 
