@@ -1,6 +1,6 @@
 ---
 name: Color Theory
-description: Guia completo de cor para projetos web: regra 60-30-10, cores semânticas (sucesso/alerta/erro), validação de contraste WCAG (mínimo 4.5:1), sistema de design tokens e implementação de dark mode. Cobre modelos de cor, harmonias, psicologia das cores e garante acessibilidade visual em todas as combinações usadas no projeto.
+description: "Guia completo de cor para projetos web: regra 60-30-10, cores semânticas (sucesso/alerta/erro), validação de contraste WCAG (mínimo 4.5:1), sistema de design tokens e implementação de dark mode. Cobre modelos de cor, harmonias, psicologia das cores e garante acessibilidade visual em todas as combinações usadas no projeto."
 ---
 
 Apply color theory principles to improve the color system of this project.
