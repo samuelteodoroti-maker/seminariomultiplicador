@@ -435,7 +435,7 @@ function Nav() {
                 variant="outline"
                 size="icon"
                 aria-label="Abrir menu"
-                className="h-10 w-10 shrink-0 bg-card/70"
+                className="h-10 w-10 shrink-0 bg-card/70 xl:hidden"
               >
                 <Menu className="h-5 w-5" />
               </Button>
