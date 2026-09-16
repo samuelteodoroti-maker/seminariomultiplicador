@@ -209,3 +209,8 @@
 #lovable-badge {
   display: none !important;
 }
+
+/* Contact panel: keep text readable over the dark surface in dark mode */
+.dark .contact-panel {
+  --primary-foreground: oklch(0.97 0.008 210);
+}
