@@ -7,7 +7,7 @@ import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { cn } from "@/lib/utils";
-import logoAsset from "@/assets/logo-multiplicador.png.asset.json";
+import logoAsset from "@/assets/logo-multiplicador.png";
 
 export const Route = createFileRoute("/aluno")({
   head: () => ({
@@ -38,7 +38,7 @@ function LogoLink({ className }: { className?: string }) {
       className={cn("group flex items-center gap-3 rounded-lg", className)}
     >
       <img
-        src={logoAsset.url}
+        src={logoAsset}
         alt="Seminário Teológico Batista Multiplicador"
         className="h-10 w-10 object-contain transition-transform group-hover:scale-105"
       />

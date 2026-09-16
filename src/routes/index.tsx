@@ -42,10 +42,10 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
-import logoAsset from "@/assets/logo-multiplicador.png.asset.json";
-import logoLightAsset from "@/assets/logo-multiplicador-light.webp.asset.json";
-import logoDarkAsset from "@/assets/logo-multiplicador-dark.webp.asset.json";
-import abibetAsset from "@/assets/abibet-logo.png.asset.json";
+import logoAsset from "@/assets/logo-multiplicador.png";
+import logoLightAsset from "@/assets/logo-multiplicador-light.webp";
+import logoDarkAsset from "@/assets/logo-multiplicador-dark.webp";
+import abibetAsset from "@/assets/abibet-logo.png";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -242,7 +242,7 @@ function LogoMark({
   void variant;
   void logoLightAsset;
   void logoDarkAsset;
-  const src = logoAsset.url;
+  const src = logoAsset;
 
   return (
     <img
@@ -992,13 +992,13 @@ function Affiliation() {
             href="https://abibet.org.br"
             target="_blank"
             rel="noreferrer"
-            className="shrink-0 rounded-xl bg-white p-4 shadow-sm ring-1 ring-border transition-transform hover:scale-[1.02]"
+            className="max-w-full rounded-xl bg-white p-4 shadow-sm ring-1 ring-border transition-transform hover:scale-[1.02]"
             aria-label="ABIBET — Associação Brasileira de Instituições Batistas de Ensino Teológico"
           >
             <img
-              src={abibetAsset.url}
+              src={abibetAsset}
               alt="ABIBET — Associação Brasileira de Instituições Batistas de Ensino Teológico"
-              className="h-16 w-auto object-contain sm:h-20"
+              className="h-16 w-auto max-w-full object-contain sm:h-20"
             />
           </a>
           <div className="flex-1">
