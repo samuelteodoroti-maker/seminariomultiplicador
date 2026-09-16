@@ -12,7 +12,7 @@ import logoAsset from "@/assets/logo-multiplicador.png.asset.json";
 export const Route = createFileRoute("/aluno")({
   head: () => ({
     meta: [
-      { title: "Portal do Aluno — Seminário Teológico Batista Multiplicador" },
+      { title: "Portal do Aluno — Seminário Multiplicador" },
       {
         name: "description",
         content:
@@ -83,17 +83,14 @@ function AlunoPage() {
 
       <main className="relative flex min-h-[calc(100vh-4rem)] items-center justify-center px-4 py-12 sm:px-6">
         <div className="pointer-events-none absolute inset-0 -z-10 bg-grid-pattern opacity-60" />
-        <div className="pointer-events-none absolute -left-20 top-20 -z-10 h-64 w-64 rounded-full bg-gold/15 blur-3xl" />
-        <div className="pointer-events-none absolute -right-20 bottom-20 -z-10 h-72 w-72 rounded-full bg-primary/15 blur-3xl" />
-
         <Card className="w-full max-w-md animate-fade-up border-border/80 bg-card/95 shadow-elegant backdrop-blur">
           <CardHeader className="space-y-2 text-center">
             <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-primary">
               <LogIn className="h-6 w-6" />
             </div>
-            <CardTitle className="font-display text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
+            <h1 className="font-display text-2xl font-bold text-foreground sm:text-3xl">
               Portal do Aluno
-            </CardTitle>
+            </h1>
             <CardDescription className="text-sm text-muted-foreground">
               Acesso exclusivo para alunos matriculados no Seminário Teológico Batista Multiplicador.
             </CardDescription>

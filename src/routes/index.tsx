@@ -1,4 +1,4 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import type { ElementType } from "react";
 import {
@@ -9,7 +9,6 @@ import {
   Clock,
   Instagram,
   Menu,
-  X,
   Star,
   Sparkles,
   ArrowRight,
@@ -27,6 +26,21 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { ThemeToggle } from "@/components/theme-toggle";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import {
+  Sheet,
+  SheetClose,
+  SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
 import logoAsset from "@/assets/logo-multiplicador.png.asset.json";
 import logoLightAsset from "@/assets/logo-multiplicador-light.webp.asset.json";
@@ -34,6 +48,23 @@ import logoDarkAsset from "@/assets/logo-multiplicador-dark.webp.asset.json";
 import abibetAsset from "@/assets/abibet-logo.png.asset.json";
 
 export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { title: "Teologia Cristã — Seminário Multiplicador" },
+      {
+        name: "description",
+        content:
+          "Conheça a formação presencial em Teologia Cristã do Seminário Teológico Batista Multiplicador, em Bangu, Rio de Janeiro.",
+      },
+      { property: "og:title", content: "Teologia Cristã — Seminário Multiplicador" },
+      {
+        property: "og:description",
+        content: "Formação bíblica e ministerial presencial em Bangu, Rio de Janeiro.",
+      },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+    ],
+  }),
   component: HomePage,
 });
 
@@ -272,13 +303,6 @@ function Nav() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  useEffect(() => {
-    document.body.style.overflow = open ? "hidden" : "";
-    return () => {
-      document.body.style.overflow = "";
-    };
-  }, [open]);
-
   return (
     <header
       className={cn(
@@ -336,47 +360,36 @@ function Nav() {
             }
 
             return (
-              <div key={item.label} className="group relative">
-                <button
-                  type="button"
-                  aria-haspopup="true"
-                  className={cn(
-                    "relative inline-flex items-center gap-1 rounded-md px-3.5 py-2 text-sm font-medium transition-colors",
-                    isActive
-                      ? "text-foreground"
-                      : "text-muted-foreground hover:text-foreground",
-                  )}
-                >
-                  {item.label}
-                  <ChevronDown className="h-3.5 w-3.5 transition-transform duration-200 group-hover:rotate-180" />
-                  <span
+              <DropdownMenu key={item.label}>
+                <DropdownMenuTrigger asChild>
+                  <Button
+                    variant="ghost"
                     className={cn(
-                      "absolute inset-x-3.5 -bottom-0.5 h-0.5 rounded-full bg-gold transition-all duration-300",
-                      isActive ? "opacity-100 scale-x-100" : "opacity-0 scale-x-0",
+                      "relative h-10 gap-1 px-3.5 text-sm font-medium",
+                      isActive ? "text-foreground" : "text-muted-foreground",
                     )}
-                  />
-                </button>
-                <div className="invisible absolute left-0 top-full z-50 pt-2 opacity-0 transition-all duration-200 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
-                  <div className="w-64 rounded-xl border border-border bg-popover p-1.5 shadow-xl">
-                    {item.children.map((c) => (
-                      <a
-                        key={c.href}
-                        href={c.href}
-                        className="block rounded-lg px-3 py-2.5 transition-colors hover:bg-accent focus-visible:bg-accent"
-                      >
-                        <span className="block text-sm font-medium text-foreground">
-                          {c.label}
-                        </span>
-                        {c.desc && (
-                          <span className="mt-0.5 block text-xs text-muted-foreground">
-                            {c.desc}
-                          </span>
-                        )}
+                  >
+                    {item.label}
+                    <ChevronDown className="h-3.5 w-3.5" />
+                    <span
+                      className={cn(
+                        "absolute inset-x-3.5 bottom-0 h-0.5 rounded-full bg-gold transition-transform duration-300",
+                        isActive ? "scale-x-100" : "scale-x-0",
+                      )}
+                    />
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="start" className="w-64 rounded-lg p-1.5 shadow-xl">
+                  {item.children.map((c) => (
+                    <DropdownMenuItem key={c.href} asChild className="cursor-pointer rounded-md p-0">
+                      <a href={c.href} className="block w-full px-3 py-2.5">
+                        <span className="block text-sm font-medium text-foreground">{c.label}</span>
+                        {c.desc && <span className="mt-0.5 block text-xs text-muted-foreground">{c.desc}</span>}
                       </a>
-                    ))}
-                  </div>
-                </div>
-              </div>
+                    </DropdownMenuItem>
+                  ))}
+                </DropdownMenuContent>
+              </DropdownMenu>
             );
           })}
         </nav>
@@ -406,83 +419,77 @@ function Nav() {
               Já sou Aluno
             </a>
           </Button>
-          <button
-            aria-label={open ? "Fechar menu" : "Abrir menu"}
-            aria-expanded={open}
-            className="grid h-10 w-10 place-items-center rounded-lg border border-border bg-card/50 backdrop-blur transition-colors hover:bg-accent"
-            onClick={() => setOpen((o) => !o)}
-          >
-            {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-          </button>
-        </div>
-      </div>
-
-      {/* Mobile sheet */}
-      <div
-        className={cn(
-          "overflow-hidden border-t border-border/60 bg-background/95 backdrop-blur-lg transition-[max-height,opacity] duration-300",
-          open
-            ? "max-h-[85vh] overflow-y-auto opacity-100"
-            : "pointer-events-none max-h-0 opacity-0",
-        )}
-      >
-        <div className="mx-auto flex max-w-7xl flex-col gap-1 px-4 py-4">
-          {NAV.map((item) =>
-            item.children ? (
-              <div key={item.label} className="py-1">
-                <p className="px-3 pb-1 pt-2 text-[11px] font-semibold uppercase tracking-[0.22em] text-muted-foreground">
-                  {item.label}
-                </p>
-                {item.children.map((c) => (
-                  <a
-                    key={c.href}
-                    href={c.href}
-                    onClick={() => setOpen(false)}
-                    className="flex items-center justify-between rounded-lg px-3 py-3 text-[15px] font-medium text-foreground transition-colors hover:bg-accent"
-                  >
-                    {c.label}
-                    <ChevronRight className="h-4 w-4 text-muted-foreground" />
-                  </a>
-                ))}
-              </div>
-            ) : (
-              <a
-                key={item.label}
-                href={item.href}
-                onClick={() => setOpen(false)}
-                className="flex items-center justify-between rounded-lg px-3 py-3 text-[15px] font-medium text-foreground transition-colors hover:bg-accent"
+          <Sheet open={open} onOpenChange={setOpen}>
+            <SheetTrigger asChild>
+              <Button
+                variant="outline"
+                size="icon"
+                aria-label="Abrir menu"
+                className="h-10 w-10 shrink-0 bg-card/70"
               >
-                {item.label}
-                <ChevronRight className="h-4 w-4 text-muted-foreground" />
-              </a>
-            ),
-          )}
+                <Menu className="h-5 w-5" />
+              </Button>
+            </SheetTrigger>
+            <SheetContent side="right" className="w-[min(90vw,24rem)] overflow-y-auto p-0">
+              <SheetHeader className="border-b border-border px-5 py-5 text-left">
+                <div className="flex items-center gap-3 pr-10">
+                  <LogoMark className="h-11 w-11 shrink-0" />
+                  <div className="min-w-0">
+                    <SheetTitle className="truncate font-display">Multiplicador</SheetTitle>
+                    <SheetDescription>Formação bíblica e ministerial</SheetDescription>
+                  </div>
+                </div>
+              </SheetHeader>
 
-          <Button
-            asChild
-            size="lg"
-            className="mt-3 h-12 rounded-full bg-primary text-primary-foreground shadow-sm hover:bg-primary/90"
-          >
-            <a href={INSCRICAO_URL} target="_blank" rel="noreferrer" onClick={() => setOpen(false)}>
-              Inscreva-se Já <ArrowRight className="ml-2 h-4 w-4" />
-            </a>
-          </Button>
-          <Button
-            asChild
-            variant="outline"
-            size="lg"
-            className="mt-2 h-12 rounded-full border-border bg-background text-[15px] font-medium text-foreground transition-colors hover:bg-accent"
-            onClick={() => setOpen(false)}
-          >
-            <a href="https://portalmultiplicador.lovable.app" target="_blank" rel="noreferrer">
-              <LogIn className="mr-2 h-4 w-4" />
-              Já sou Aluno
-            </a>
-          </Button>
-          <div className="mt-4 flex items-center justify-between rounded-lg border border-border/60 bg-card/40 px-3 py-2">
-            <span className="text-sm font-medium text-muted-foreground">Tema</span>
-            <ThemeToggle />
-          </div>
+              <nav aria-label="Menu principal" className="flex flex-col gap-1 px-4 py-4">
+                {NAV.map((item) =>
+                  item.children ? (
+                    <div key={item.label} className="py-1">
+                      <p className="px-3 pb-1 pt-2 text-[11px] font-semibold uppercase tracking-[0.22em] text-muted-foreground">
+                        {item.label}
+                      </p>
+                      {item.children.map((c) => (
+                        <SheetClose asChild key={c.href}>
+                          <a
+                            href={c.href}
+                            className="flex min-h-11 items-center justify-between rounded-md px-3 py-3 text-base font-medium text-foreground transition-colors hover:bg-accent"
+                          >
+                            {c.label}
+                            <ChevronRight className="h-4 w-4 shrink-0 text-muted-foreground" />
+                          </a>
+                        </SheetClose>
+                      ))}
+                    </div>
+                  ) : (
+                    <SheetClose asChild key={item.label}>
+                      <a
+                        href={item.href}
+                        className="flex min-h-11 items-center justify-between rounded-md px-3 py-3 text-base font-medium text-foreground transition-colors hover:bg-accent"
+                      >
+                        {item.label}
+                        <ChevronRight className="h-4 w-4 shrink-0 text-muted-foreground" />
+                      </a>
+                    </SheetClose>
+                  ),
+                )}
+
+                <Button asChild size="lg" className="mt-4 h-12 rounded-full">
+                  <a href={INSCRICAO_URL} target="_blank" rel="noreferrer">
+                    Inscreva-se Já <ArrowRight className="ml-1 h-4 w-4" />
+                  </a>
+                </Button>
+                <Button asChild variant="outline" size="lg" className="mt-1 h-12 rounded-full">
+                  <a href="https://portalmultiplicador.lovable.app" target="_blank" rel="noreferrer">
+                    <LogIn className="mr-1 h-4 w-4" /> Já sou Aluno
+                  </a>
+                </Button>
+                <div className="mt-3 flex items-center justify-between rounded-md border border-border bg-muted/40 px-3 py-2">
+                  <span className="text-sm font-medium text-muted-foreground">Tema</span>
+                  <ThemeToggle />
+                </div>
+              </nav>
+            </SheetContent>
+          </Sheet>
         </div>
       </div>
       <ScrollProgress />
@@ -498,14 +505,11 @@ function Hero() {
       id="home"
       className="relative isolate scroll-mt-24 overflow-hidden border-b border-border/70 bg-hero-pattern"
     >
-      <div className="absolute inset-0 -z-10 bg-grid-pattern opacity-70" />
-      {/* Decorative floating orbs */}
-      <div className="pointer-events-none absolute -left-24 top-20 -z-10 h-64 w-64 rounded-full bg-gold/20 blur-3xl" />
-      <div className="pointer-events-none absolute -right-24 bottom-10 -z-10 h-72 w-72 rounded-full bg-primary/20 blur-3xl" />
+      <div className="absolute inset-0 -z-10 bg-grid-pattern opacity-50" />
 
       <div className="mx-auto max-w-7xl px-4 pb-24 pt-16 sm:px-6 sm:pb-28 sm:pt-24 lg:px-8 lg:pb-36 lg:pt-32">
         <div className="mx-auto max-w-4xl text-center animate-fade-up">
-          <LogoMark variant="light" className="mx-auto mb-8 h-24 w-24 rounded-full bg-white p-3 shadow-xl shadow-primary/20 ring-1 ring-border dark:bg-white/95 dark:ring-white/20 sm:h-28 sm:w-28" />
+          <LogoMark variant="light" className="mx-auto mb-8 h-24 w-24 rounded-full bg-logo-surface p-3 shadow-xl shadow-primary/20 ring-1 ring-border sm:h-28 sm:w-28" />
 
           <Badge
             variant="outline"
@@ -515,13 +519,13 @@ function Hero() {
             Formação Ministerial · Desde 2019
           </Badge>
 
-          <h1 className="font-display text-[2.25rem] font-bold leading-[1.05] tracking-tight text-balance text-foreground sm:text-5xl md:text-6xl lg:text-[4.5rem]">
+          <h1 className="font-display text-[2.25rem] font-bold leading-[1.05] text-balance text-foreground sm:text-5xl md:text-6xl lg:text-[4.5rem]">
             Seminário Teológico Batista{" "}
-            <span className="relative inline-block whitespace-nowrap">
-              <span className="relative z-10 bg-gradient-to-br from-primary via-primary to-primary/70 bg-clip-text text-transparent">
+            <span className="relative inline-block sm:whitespace-nowrap">
+              <span className="relative z-10 text-primary">
                 Multiplicador
               </span>
-              <span className="absolute inset-x-0 bottom-1 -z-0 h-3 -skew-x-6 rounded-sm bg-gold/40" />
+               <span className="absolute inset-x-0 bottom-1 -z-0 h-3 rounded-sm bg-gold/35" />
             </span>
           </h1>
 
@@ -1019,11 +1023,7 @@ function Contact() {
   return (
     <section id="contato" className="scroll-mt-24 py-24 sm:py-32">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="relative overflow-hidden rounded-3xl border border-border bg-gradient-to-br from-primary via-primary to-primary/85 p-8 text-primary-foreground shadow-2xl shadow-primary/20 sm:p-12 lg:p-16 dark:from-card dark:via-card dark:to-background dark:shadow-black/30 dark:[--primary-foreground:oklch(0.96_0.008_210)]">
-          {/* Decorative */}
-          <div className="pointer-events-none absolute -right-24 -top-24 h-64 w-64 rounded-full bg-gold/20 blur-3xl" />
-          <div className="pointer-events-none absolute -bottom-24 -left-24 h-64 w-64 rounded-full bg-gold/10 blur-3xl" />
-
+        <div className="relative overflow-hidden rounded-2xl border border-border bg-gradient-to-br from-primary via-primary to-primary/85 p-8 text-primary-foreground shadow-2xl shadow-primary/20 sm:p-12 lg:p-16 dark:from-card dark:via-card dark:to-background">
           <div className="relative grid gap-12 lg:grid-cols-2 lg:gap-16">
             <div>
               <div className="inline-flex items-center gap-2.5">
@@ -1032,10 +1032,10 @@ function Contact() {
                   Contato
                 </span>
               </div>
-              <h2 className="mt-5 font-display text-3xl font-bold leading-[1.05] text-balance text-white drop-shadow-sm sm:text-4xl md:text-5xl dark:text-primary-foreground">
+              <h2 className="mt-5 font-display text-3xl font-bold leading-[1.05] text-balance text-primary-foreground sm:text-4xl md:text-5xl">
                 Dê o próximo passo em seu chamado.
               </h2>
-              <p className="mt-5 max-w-md text-base leading-relaxed text-white/85 text-pretty sm:text-lg dark:text-primary-foreground/80">
+              <p className="mt-5 max-w-md text-base leading-relaxed text-primary-foreground/80 text-pretty sm:text-lg">
                 Fale com nossa equipe pelo WhatsApp, e-mail ou visite nossa
                 sede em Bangu. Teremos alegria em atender você.
               </p>
@@ -1044,7 +1044,7 @@ function Contact() {
                 <Button
                   asChild
                   size="lg"
-                  className="h-12 rounded-full bg-gold px-6 text-gold-foreground shadow-lg shadow-black/10 transition-transform hover:-translate-y-0.5 hover:bg-gold/90"
+                  className="h-12 rounded-full bg-gold px-6 text-gold-foreground shadow-lg shadow-primary/20 transition-transform hover:-translate-y-0.5 hover:bg-gold/90"
                 >
                   <a href={INSCRICAO_URL} target="_blank" rel="noreferrer">
                     <Sparkles className="mr-2 h-4 w-4" />
@@ -1199,7 +1199,7 @@ function Footer() {
 
         <div className="mt-12 flex flex-col items-start justify-between gap-3 border-t border-border pt-6 text-xs text-muted-foreground md:flex-row md:items-center">
           <p>
-            © {new Date().getFullYear()} Copyright Seminário Teológico
+            © {new Date().getFullYear()} Copyright Seminário Teológico Batista
             Multiplicador. Todos os direitos reservados.
           </p>
           <p>Atendimento de terça a sábado, a partir das 14h · Aulas terças, quintas e sábados (noite)</p>
@@ -1218,11 +1218,11 @@ function FloatingWhatsApp() {
       target="_blank"
       rel="noreferrer"
       aria-label="Fale conosco no WhatsApp"
-      className="group fixed bottom-5 right-5 z-40 inline-flex items-center gap-2 rounded-full bg-[#25D366] px-4 py-3 text-white shadow-xl shadow-black/25 transition-all hover:-translate-y-0.5 hover:bg-[#20b858] active:scale-95"
+      className="group fixed bottom-5 right-5 z-40 inline-flex min-h-11 items-center gap-2 rounded-full bg-whatsapp px-4 py-3 text-gold-foreground shadow-xl transition-all hover:-translate-y-0.5 hover:bg-whatsapp-hover active:scale-95"
     >
       <MessageCircle className="h-5 w-5" />
       <span className="hidden text-sm font-semibold sm:inline">WhatsApp</span>
-      <span className="absolute inset-0 -z-10 animate-ping rounded-full bg-[#25D366] opacity-20 group-hover:opacity-0" />
+      <span className="absolute inset-0 -z-10 animate-ping rounded-full bg-whatsapp opacity-20 group-hover:opacity-0" />
     </a>
   );
 }
