@@ -352,7 +352,7 @@ function Nav() {
                   href={item.href}
                   aria-current={isActive ? "true" : undefined}
                   className={cn(
-                    "relative rounded-md px-3.5 py-2 text-sm font-medium transition-colors",
+                    "relative rounded-md px-3 py-2 text-sm font-medium transition-colors",
                     isActive
                       ? "text-foreground"
                       : "text-muted-foreground hover:text-foreground",
@@ -361,7 +361,7 @@ function Nav() {
                   {item.label}
                   <span
                     className={cn(
-                      "absolute inset-x-3.5 -bottom-0.5 h-0.5 rounded-full bg-gold transition-all duration-300",
+                      "absolute inset-x-3 -bottom-0.5 h-0.5 rounded-full bg-gold transition-all duration-300",
                       isActive ? "opacity-100 scale-x-100" : "opacity-0 scale-x-0",
                     )}
                   />
@@ -375,7 +375,7 @@ function Nav() {
                   <Button
                     variant="ghost"
                     className={cn(
-                      "relative h-10 gap-1 px-3.5 text-sm font-medium",
+                      "relative h-10 gap-1 px-3 text-sm font-medium",
                       isActive ? "text-foreground" : "text-muted-foreground",
                     )}
                   >
@@ -383,7 +383,7 @@ function Nav() {
                     <ChevronDown className="h-3.5 w-3.5" />
                     <span
                       className={cn(
-                        "absolute inset-x-3.5 bottom-0 h-0.5 rounded-full bg-gold transition-transform duration-300",
+                        "absolute inset-x-3 bottom-0 h-0.5 rounded-full bg-gold transition-transform duration-300",
                         isActive ? "scale-x-100" : "scale-x-0",
                       )}
                     />
