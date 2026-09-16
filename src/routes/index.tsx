@@ -318,24 +318,27 @@ function Nav() {
           : "border-b border-transparent bg-transparent",
       )}
     >
-      <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8">
+      <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-2.5 sm:px-6 lg:px-8">
         <a
           href="#home"
-          className="group flex min-w-0 items-center gap-3 rounded-lg"
+          className="group flex shrink-0 items-center gap-2.5 rounded-lg"
         >
-          <LogoMark className="h-11 w-11 shrink-0 transition-transform group-hover:scale-105" />
-          <span className="flex min-w-0 flex-col leading-tight">
-            <span className="truncate font-display text-base font-bold sm:text-lg">
-              <span className="sm:hidden">Multiplicador</span>
-              <span className="hidden sm:inline">Seminário Teológico Batista Multiplicador</span>
+          <LogoMark className="h-10 w-10 shrink-0 transition-transform group-hover:scale-105 sm:h-11 sm:w-11" />
+          <span className="flex flex-col leading-[1.15]">
+            <span className="font-display text-base font-bold sm:text-[17px] xl:hidden">
+              Multiplicador
             </span>
-            <span className="hidden text-[10px] font-medium uppercase tracking-[0.22em] text-muted-foreground sm:block">
+            <span className="hidden font-display text-[15px] font-bold leading-[1.15] xl:block">
+              <span className="block">Seminário Teológico Batista</span>
+              <span className="block">Multiplicador</span>
+            </span>
+            <span className="hidden text-[10px] font-medium uppercase tracking-[0.2em] text-muted-foreground sm:block xl:hidden">
               Teológico · Rio de Janeiro
             </span>
           </span>
         </a>
 
-        <nav aria-label="Navegação principal" className="hidden items-center gap-0.5 lg:flex">
+        <nav aria-label="Navegação principal" className="hidden min-w-0 items-center gap-0.5 xl:flex">
           {NAV.map((item) => {
             const ids = item.children
               ? item.children.map((c) => c.href.slice(1))
