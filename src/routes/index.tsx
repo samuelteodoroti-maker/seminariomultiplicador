@@ -1033,7 +1033,7 @@ function Contact() {
   return (
     <section id="contato" className="scroll-mt-24 py-24 sm:py-32">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="relative overflow-hidden rounded-2xl border border-border bg-gradient-to-br from-primary via-primary to-primary/85 p-8 text-primary-foreground shadow-2xl shadow-primary/20 sm:p-12 lg:p-16 dark:from-card dark:via-card dark:to-background">
+        <div className="contact-panel relative overflow-hidden rounded-2xl border border-border bg-gradient-to-br from-primary via-primary to-primary/85 p-8 text-primary-foreground shadow-2xl shadow-primary/20 sm:p-12 lg:p-16 dark:from-card dark:via-card dark:to-background">
           <div className="relative grid gap-12 lg:grid-cols-2 lg:gap-16">
             <div>
               <div className="inline-flex items-center gap-2.5">
