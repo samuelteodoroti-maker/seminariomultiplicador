@@ -12,7 +12,6 @@ import {
   Star,
   Sparkles,
   ArrowRight,
-  MessageCircle,
   CheckCircle2,
   ChevronRight,
   ChevronDown,
