@@ -68,6 +68,8 @@ export const Route = createFileRoute("/")({
   component: HomePage,
 });
 
+const EMAIL_CONTATO = "contato@seminariomultiplicador.com.br";
+
 const INSCRICAO_URL =
   "https://docs.google.com/forms/d/e/1FAIpQLSd_FXumqagFpFB14oDqXOgmRRNaQliiftQqzplHdrx6uC4hhw/viewform?utm_source=ig&utm_medium=social&utm_content=link_in_bio";
 
@@ -1209,20 +1211,3 @@ function Footer() {
   );
 }
 
-/* ---------------- Floating WhatsApp ---------------- */
-
-function FloatingWhatsApp() {
-  return (
-    <a
-      href="https://wa.me/5521971803049"
-      target="_blank"
-      rel="noreferrer"
-      aria-label="Fale conosco no WhatsApp"
-      className="group fixed bottom-5 right-5 z-40 inline-flex min-h-11 items-center gap-2 rounded-full bg-whatsapp px-4 py-3 text-gold-foreground shadow-xl transition-all hover:-translate-y-0.5 hover:bg-whatsapp-hover active:scale-95"
-    >
-      <MessageCircle className="h-5 w-5" />
-      <span className="hidden text-sm font-semibold sm:inline">WhatsApp</span>
-      <span className="absolute inset-0 -z-10 animate-ping rounded-full bg-whatsapp opacity-20 group-hover:opacity-0" />
-    </a>
-  );
-}
