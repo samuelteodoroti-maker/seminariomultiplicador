@@ -131,7 +131,6 @@ function HomePage() {
 
       </main>
       <Footer />
-      <FloatingWhatsApp />
     </div>
   );
 }
@@ -801,12 +800,8 @@ function Courses() {
                     variant="outline"
                     className="h-12 rounded-full border-border bg-background px-6 hover:bg-accent"
                   >
-                    <a
-                      href="https://wa.me/5521971803049?text=Ol%C3%A1%21%20Tenho%20interesse%20no%20curso%20de%20Teologia%20Crist%C3%A3."
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      <MessageCircle className="mr-2 h-4 w-4" />
+                    <a href={`mailto:${EMAIL_CONTATO}?subject=D%C3%BAvidas%20sobre%20o%20curso%20de%20Teologia%20Crist%C3%A3`}>
+                      <Mail className="mr-2 h-4 w-4" />
                       Tirar dúvidas
                     </a>
                   </Button>
@@ -1046,7 +1041,7 @@ function Contact() {
                 Dê o próximo passo em seu chamado.
               </h2>
               <p className="mt-5 max-w-md text-base leading-relaxed text-primary-foreground/80 text-pretty sm:text-lg">
-                Fale com nossa equipe pelo WhatsApp, e-mail ou visite nossa
+                Fale com nossa equipe por e-mail ou visite nossa
                 sede em Bangu. Teremos alegria em atender você.
               </p>
 
@@ -1067,23 +1062,16 @@ function Contact() {
                   variant="outline"
                   className="h-12 rounded-full border-primary-foreground/25 bg-transparent px-6 text-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground"
                 >
-                  <a
-                    href="https://wa.me/5521971803049"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    <MessageCircle className="mr-2 h-4 w-4" /> WhatsApp
+                  <a href={`mailto:${EMAIL_CONTATO}`}>
+                    <Mail className="mr-2 h-4 w-4" /> Enviar e-mail
                   </a>
                 </Button>
               </div>
             </div>
 
             <div className="grid gap-3 sm:grid-cols-2">
-              <ContactItem icon={Phone} title="Telefone / WhatsApp">
-                (21) 97180-3049
-              </ContactItem>
-              <ContactItem icon={Mail} title="E-mail">
-                contato@multiplicadorrj.com.br
+              <ContactItem icon={Mail} title="E-mail" wide>
+                {EMAIL_CONTATO}
               </ContactItem>
               <ContactItem icon={MapPin} title="Endereço" wide>
                 Av. de Santa Cruz, 6197
@@ -1185,18 +1173,10 @@ function Footer() {
             <ul className="mt-4 space-y-2.5 text-sm text-foreground/80">
               <li>
                 <a
-                  href="tel:+5521971803049"
-                  className="inline-flex min-h-10 items-center gap-2 rounded-md transition-colors hover:text-gold"
-                >
-                  <Phone className="h-4 w-4 text-gold" /> (21) 97180-3049
-                </a>
-              </li>
-              <li>
-                <a
-                  href="mailto:contato@multiplicadorrj.com.br"
+                  href={`mailto:${EMAIL_CONTATO}`}
                   className="inline-flex min-h-10 items-center gap-2 break-all rounded-md transition-colors hover:text-gold"
                 >
-                  <Mail className="h-4 w-4 shrink-0 text-gold" /> contato@multiplicadorrj.com.br
+                  <Mail className="h-4 w-4 shrink-0 text-gold" /> {EMAIL_CONTATO}
                 </a>
               </li>
               <li className="flex items-start gap-2">
