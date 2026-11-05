@@ -784,7 +784,7 @@ function Courses() {
                   ))}
                 </ul>
 
-                <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+                <div className="mt-8 flex w-full flex-col items-center justify-center gap-3 sm:w-auto sm:flex-row">
                   <Button
                     asChild
                     size="lg"
@@ -1030,8 +1030,8 @@ function Contact() {
     <section id="contato" className="scroll-mt-24 py-24 sm:py-32">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="contact-panel relative overflow-hidden rounded-2xl border border-border bg-gradient-to-br from-primary via-primary to-primary/85 p-8 text-primary-foreground shadow-2xl shadow-primary/20 sm:p-12 lg:p-16 dark:from-card dark:via-card dark:to-background">
-          <div className="relative grid gap-12 lg:grid-cols-2 lg:gap-16">
-            <div>
+          <div className="relative grid min-w-0 gap-12 text-center lg:grid-cols-2 lg:items-center lg:gap-16">
+            <div className="flex min-w-0 flex-col items-center">
               <div className="inline-flex items-center gap-2.5">
                 <span className="h-px w-8 bg-gold" />
                 <span className="text-[11px] font-semibold uppercase tracking-[0.28em] text-gold">
@@ -1041,12 +1041,12 @@ function Contact() {
               <h2 className="mt-5 font-display text-3xl font-bold leading-[1.05] text-balance text-primary-foreground sm:text-4xl md:text-5xl">
                 Dê o próximo passo em seu chamado.
               </h2>
-              <p className="mt-5 max-w-md text-base leading-relaxed text-primary-foreground/80 text-pretty sm:text-lg">
+              <p className="mx-auto mt-5 max-w-md text-base leading-relaxed text-primary-foreground/80 text-pretty sm:text-lg">
                 Fale com nossa equipe por e-mail ou visite nossa
                 sede em Bangu. Teremos alegria em atender você.
               </p>
 
-              <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+              <div className="mt-8 flex w-full flex-col items-center justify-center gap-3 sm:w-auto sm:flex-row">
                 <Button
                   asChild
                   size="lg"
@@ -1070,7 +1070,7 @@ function Contact() {
               </div>
             </div>
 
-            <div className="grid gap-3 sm:grid-cols-2">
+            <div className="grid min-w-0 gap-3 sm:grid-cols-2">
               <ContactItem icon={Mail} title="E-mail" wide>
                 {EMAIL_CONTATO}
               </ContactItem>
@@ -1107,7 +1107,7 @@ function ContactItem({
   return (
     <div
       className={cn(
-        "rounded-2xl border border-primary-foreground/15 bg-primary-foreground/[0.06] p-5 backdrop-blur transition-colors hover:bg-primary-foreground/10",
+        "flex min-w-0 flex-col items-center overflow-hidden rounded-2xl border border-primary-foreground/15 bg-primary-foreground/[0.06] p-5 text-center backdrop-blur transition-colors hover:bg-primary-foreground/10",
         wide && "sm:col-span-2",
       )}
     >
@@ -1117,7 +1117,7 @@ function ContactItem({
       <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-primary-foreground/60">
         {title}
       </p>
-      <p className="mt-1.5 text-[15px] leading-relaxed text-primary-foreground">
+      <p className="mt-1.5 max-w-full text-[15px] leading-relaxed text-primary-foreground [overflow-wrap:anywhere]">
         {children}
       </p>
     </div>
